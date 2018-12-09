@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>C:\Scada\ScadaAgent\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -32,14 +32,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Log.Std, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Log\Log.Std\bin\Release\netstandard2.0\Log.Std.dll</HintPath>
-    </Reference>
-    <Reference Include="ScadaData.Std, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\ScadaData\ScadaData.Std\bin\Release\netstandard2.0\ScadaData.Std.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Management" />
@@ -71,6 +63,14 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Log\Log.Std\Log.Std.csproj">
+      <Project>{1ce5a2d8-dc37-441a-bb78-ed8764dd79f6}</Project>
+      <Name>Log.Std</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ScadaData\ScadaData.Std\ScadaData.Std.csproj">
+      <Project>{04c8531a-f6a5-4914-b97c-ee8618e6e5c6}</Project>
+      <Name>ScadaData.Std</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ScadaAgentCore\ScadaAgentCore.csproj">
       <Project>{5163526D-91E4-414D-97FE-090E1E7FDA6B}</Project>
       <Name>ScadaAgentCore</Name>
@@ -97,6 +97,9 @@
     <Content Include="Config\ScadaAgentConfig.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

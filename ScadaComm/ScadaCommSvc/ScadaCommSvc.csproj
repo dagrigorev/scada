@@ -37,7 +37,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>C:\Scada\ScadaComm\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -51,17 +51,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Log, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Log\Log\bin\Release\Log.dll</HintPath>
-    </Reference>
-    <Reference Include="ScadaData, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\ScadaData\ScadaData\bin\Release\ScadaData.dll</HintPath>
-    </Reference>
-    <Reference Include="ScadaData.Svc">
-      <HintPath>..\..\ScadaData\ScadaData.Svc\bin\Release\ScadaData.Svc.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Data" />
@@ -96,6 +85,18 @@
     <Content Include="Config\ScadaCommSvcConfig.xml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Log\Log\Log.csproj">
+      <Project>{a05ea084-e509-4025-9241-6a5be5c2b328}</Project>
+      <Name>Log</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ScadaData\ScadaData.Svc\ScadaData.Svc.csproj">
+      <Project>{827ccedc-f418-4261-9448-ea28f9033a4d}</Project>
+      <Name>ScadaData.Svc</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ScadaData\ScadaData\ScadaData.csproj">
+      <Project>{c5dc293f-13ca-435f-a7db-4ba91639c292}</Project>
+      <Name>ScadaData</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ScadaCommCommon\ScadaCommCommon.csproj">
       <Project>{7baeae0e-4694-41d7-bc29-f205aef69741}</Project>
       <Name>ScadaCommCommon</Name>

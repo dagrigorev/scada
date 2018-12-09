@@ -10,12 +10,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="Log.Std">
-      <HintPath>..\..\Log\Log.Std\bin\Release\netstandard2.0\Log.Std.dll</HintPath>
-    </Reference>
-    <Reference Include="ScadaData.Std">
-      <HintPath>..\..\ScadaData\ScadaData.Std\bin\Release\netstandard2.0\ScadaData.Std.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\..\Log\Log.Std\Log.Std.csproj" />
+    <ProjectReference Include="..\..\ScadaData\ScadaData.Std\ScadaData.Std.csproj" />
   </ItemGroup>
 
 </Project>

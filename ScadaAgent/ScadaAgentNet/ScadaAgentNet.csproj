@@ -31,14 +31,6 @@
     <DocumentationFile>bin\Release\ScadaAgentNet.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Log.Std, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Log\Log.Std\bin\Release\netstandard2.0\Log.Std.dll</HintPath>
-    </Reference>
-    <Reference Include="ScadaData.Std, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\ScadaData\ScadaData.Std\bin\Release\netstandard2.0\ScadaData.Std.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ServiceModel" />
   </ItemGroup>
@@ -49,6 +41,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Log\Log.Std\Log.Std.csproj">
+      <Project>{1ce5a2d8-dc37-441a-bb78-ed8764dd79f6}</Project>
+      <Name>Log.Std</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ScadaData\ScadaData.Std\ScadaData.Std.csproj">
+      <Project>{04c8531a-f6a5-4914-b97c-ee8618e6e5c6}</Project>
+      <Name>ScadaData.Std</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ScadaAgentCore\ScadaAgentCore.csproj">
       <Project>{5163526d-91e4-414d-97fe-090e1e7fda6b}</Project>
       <Name>ScadaAgentCore</Name>

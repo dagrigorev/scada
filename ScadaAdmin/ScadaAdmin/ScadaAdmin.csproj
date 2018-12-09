@@ -23,7 +23,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>C:\Scada\ScadaAdmin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -61,18 +61,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Ionic.Zip">
-      <HintPath>..\..\..\dll\Ionic.Zip.dll</HintPath>
+      <HintPath>..\..\..\..\Documents\dll\Ionic.Zip.dll</HintPath>
     </Reference>
-    <Reference Include="Log, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Log\Log\bin\Release\Log.dll</HintPath>
+    <Reference Include="MySql.Data">
+      <HintPath>..\..\..\..\Documents\dll\MySql.Data.dll</HintPath>
     </Reference>
-    <Reference Include="ScadaCommCommon">
-      <HintPath>..\..\ScadaComm\ScadaCommCommon\bin\Release\ScadaCommCommon.dll</HintPath>
+    <Reference Include="OpenPop">
+      <HintPath>..\..\..\..\Documents\dll\OpenPop.dll</HintPath>
     </Reference>
-    <Reference Include="ScadaData, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\ScadaData\ScadaData\bin\Release\ScadaData.dll</HintPath>
+    <Reference Include="Svg">
+      <HintPath>..\..\..\..\Documents\dll\Svg.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -90,7 +88,7 @@
     <Reference Include="System.Xml" />
     <Reference Include="WinControl, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\DLL\WinControl.dll</HintPath>
+      <HintPath>..\..\..\..\Documents\dll\WinControl.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -363,6 +361,20 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\AgentSvcRef\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Log\Log\Log.csproj">
+      <Project>{a05ea084-e509-4025-9241-6a5be5c2b328}</Project>
+      <Name>Log</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ScadaComm\ScadaCommCommon\ScadaCommCommon.csproj">
+      <Project>{7baeae0e-4694-41d7-bc29-f205aef69741}</Project>
+      <Name>ScadaCommCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ScadaData\ScadaData\ScadaData.csproj">
+      <Project>{c5dc293f-13ca-435f-a7db-4ba91639c292}</Project>
+      <Name>ScadaData</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
