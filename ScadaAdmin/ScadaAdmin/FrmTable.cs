@@ -26,11 +26,13 @@
 using Scada;
 using Scada.UI;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlServerCe;
 using System.Drawing;
 using System.Globalization;
 using System.Windows.Forms;
+using Scada.UI.CommandManager;
 using WinControl;
 
 namespace ScadaAdmin
@@ -52,7 +54,10 @@ namespace ScadaAdmin
         private bool clrColExists;   // существует столбец цвета
         private bool srcColExists;   // существует столбец исходного кода
         private bool modDTColExists; // существует столбец времени изменения
+        private Memento<Dictionary<int, DataRow>, DataTable> _memento;
 
+        public CommandManager _cmdManager = new CommandManager(6);
+        public event CommandManager.CommandChanged OnTableCommandChanged;
 
         /// <summary>
         /// Конструктор
@@ -71,6 +76,9 @@ namespace ScadaAdmin
             WinInfo = null;
             Table = null;
             GridContextMenu = null;
+            _memento = null;
+
+            _cmdManager.OnCommandChanged += OnMementoCommandChanged;
         }
 
 
@@ -117,6 +125,11 @@ namespace ScadaAdmin
                 Table == null ? false : Table.DefaultView.Count > 0;
         }
 
+        private void OnMementoCommandChanged(object sender, CommandManagerEventArgs args)
+        {
+            OnTableCommandChanged(sender, args);
+        }
+
         /// <summary>
         /// Проверить корректность значения ячейки
         /// </summary>
@@ -159,6 +172,7 @@ namespace ScadaAdmin
             return result;
         }
 
+        
         /// <summary>
         /// Преобразовать строку в цвет
         /// </summary>
@@ -365,6 +379,7 @@ namespace ScadaAdmin
             Translator.TranslateForm(this, "ScadaAdmin.FrmTable");
             if (bindingNavigatorCountItem.Text.Contains("{0}"))
                 bindingNavigator.CountItemFormat = bindingNavigatorCountItem.Text;
+
         }
 
         private void FrmObj_Shown(object sender, EventArgs e)
@@ -399,6 +414,8 @@ namespace ScadaAdmin
 
                 SetModified(false);
             }
+
+            _memento = new DataTableMemento(new Dictionary<int, DataRow>(), Table);
         }
 
 
@@ -641,6 +658,8 @@ namespace ScadaAdmin
                             }
                         }
                     }
+
+                    _cmdManager.Refresh();
                 }
                 catch (Exception ex)
                 {
@@ -656,17 +675,39 @@ namespace ScadaAdmin
             }
         }
 
+        private DataRow CloneRow(DataTable table, int rowIndex)
+        {
+            if (table == null) return null;
+            var row = table.Rows[rowIndex];
+            var rowCopy = table.NewRow();
+            var objArray = new object[row.ItemArray.Length];
+            row.ItemArray.CopyTo(objArray, 0);
+            rowCopy.ItemArray = objArray;
+            return rowCopy;
+        }
+
         private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
         {
             DataGridViewSelectedRowCollection selectedRows = dataGridView.SelectedRows;
-
             if (MessageBox.Show(selectedRows.Count > 1 ? AppPhrases.DeleteRowsConfirm : AppPhrases.DeleteRowConfirm, 
                 CommonPhrases.QuestionCaption, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 Table.RowDeleted -= dataTable_RowDeleted;
 
+                var mementoData = new Dictionary<int, DataRow>();
                 if (selectedRows.Count > 0)
                 {
+                    // Перед удалением необходимо скопировать все строки
+                    for (int j = selectedRows.Count - 1; j >= 0; j--)
+                    {
+                        int ind = selectedRows[j].Index;
+                        if (0 <= ind && ind < Table.DefaultView.Count)
+                        {
+                            var rowCopy = CloneRow(Table, ind);
+                            mementoData.Add(ind, rowCopy);
+                        }
+                    }
+
                     for (int i = selectedRows.Count - 1; i >= 0; i--)
                     {
                         int ind = selectedRows[i].Index;
@@ -676,8 +717,16 @@ namespace ScadaAdmin
                 }
                 else if (dataGridView.CurrentRow != null)
                 {
+                    var rowCopy = CloneRow(Table, dataGridView.CurrentRow.Index);
+                    mementoData.Add(dataGridView.CurrentRow.Index, rowCopy);
                     Table.DefaultView.Delete(dataGridView.CurrentRow.Index);
                 }
+
+                var currentMemento = new DataTableMemento(mementoData, Table);
+                var command = new MementoCommand<Dictionary<int, DataRow>, DataTable>(_memento, currentMemento);
+                command.Type = CommandManager.CommandType.Remove;
+                if (_cmdManager.Invoke(command))
+                    _memento = currentMemento;
 
                 Save();
                 Table.RowDeleted += dataTable_RowDeleted;

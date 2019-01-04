@@ -88,6 +88,13 @@
     <Compile Include="Data\Tables\Trend.cs" />
     <Compile Include="ITreeNode.cs" />
     <Compile Include="SerializationBinder.cs" />
+    <Compile Include="UI\CommandManager\CommandManager.cs" />
+    <Compile Include="UI\CommandManager\CommandManagerEventArgs.cs" />
+    <Compile Include="UI\CommandManager\DataTableMemento.cs" />
+    <Compile Include="UI\CommandManager\ICommand.cs" />
+    <Compile Include="UI\CommandManager\Memento.cs" />
+    <Compile Include="UI\CommandManager\MementoCommand.cs" />
+    <Compile Include="UI\EnumDisplayText.cs" />
     <Compile Include="UI\ObjectChangedEventArgs.cs" />
     <Compile Include="UI\ObjectChangedEventHandler.cs" />
     <Compile Include="UI\ScadaUiUtils.cs" />

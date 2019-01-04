@@ -25,6 +25,7 @@
 
 using Scada;
 using Scada.UI;
+using Scada.UI.CommandManager;
 using ScadaAdmin.Remote;
 using System;
 using System.Collections.Generic;
@@ -223,6 +224,8 @@ namespace ScadaAdmin
             FrmTable frmTable = new FrmTable();
             frmTable.Text = text;
             frmTable.Table = table;
+
+            frmTable.OnTableCommandChanged += OnMementoCommandChanged;
             return frmTable;
         }
 
@@ -341,6 +344,7 @@ namespace ScadaAdmin
                         itfWin.WinInfo.TreeNode = node;
 
                         frmTable.FormClosed += ChildFormClosed;
+                        frmTable.OnTableCommandChanged += OnMementoCommandChanged;
                         nodeInfo.Form = frmTable;
 
                         winControl.AddForm(frmTable, "", ilTree.Images[imageKey]);
@@ -587,6 +591,52 @@ namespace ScadaAdmin
             }
         }
 
+        private void OnMementoCommandChanged(object sender, CommandManagerEventArgs args)
+        {
+            ResetUndoRedoHistory();
+
+            miEditRedo.Enabled = args.RedoReady;
+            miEditUndo.Enabled = args.UndoReady;
+            btnRedo.Enabled = args.RedoReady;
+            btnUndo.Enabled = args.UndoReady;
+
+            if (sender is CommandManager cmdMgr)
+            {
+                SetUndoRedoHistory(cmdMgr);
+            }
+        }
+
+        private void ResetUndoRedoHistory()
+        {
+            if (miEditUndo.Enabled && btnUndo.Enabled)
+            {
+                miEditUndo.DropDownItems.Clear();
+            }
+            if (miEditRedo.Enabled && btnRedo.Enabled)
+            {
+                miEditRedo.DropDownItems.Clear();
+            }
+        }
+
+        private void SetUndoRedoHistory(CommandManager commandManager)
+        {
+            if (miEditUndo.Enabled && btnUndo.Enabled)
+            {
+                var undoHistory = commandManager.GetUndoDescription();
+                foreach (var cmdDescription in undoHistory)
+                {
+                    miEditUndo.DropDownItems.Add(cmdDescription);
+                }
+            }
+            if (miEditRedo.Enabled && btnRedo.Enabled)
+            {
+                var redoHistory = commandManager.GetRedoDescription();
+                foreach (var cmdDescription in redoHistory)
+                {
+                    miEditRedo.DropDownItems.Add(cmdDescription);
+                }
+            }
+        }
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
@@ -842,7 +892,10 @@ namespace ScadaAdmin
             FrmExport frmExport = new FrmExport();
             FrmTable frmTable = winControl.ActiveForm as FrmTable;
             if (frmTable != null && frmTable.Table != null)
+            {
                 frmExport.DefaultTableName = frmTable.Table.TableName;
+                frmTable.OnTableCommandChanged += OnMementoCommandChanged;
+            }
             frmExport.DefaultDirectory = settings.AppSett.BaseDATDir;
             frmExport.ShowDialog();
         }
@@ -854,8 +907,10 @@ namespace ScadaAdmin
             FrmTable frmTable = winControl.ActiveForm as FrmTable;
 
             if (frmTable != null && frmTable.Table != null)
+            {
                 frmImport.DefaultTableName = frmTable.Table.TableName;
-
+                frmTable.OnTableCommandChanged += OnMementoCommandChanged;
+            }
             frmImport.DefaultBaseDATDir = settings.AppSett.BaseDATDir;
             frmImport.ShowDialog();
         }
@@ -918,7 +973,10 @@ namespace ScadaAdmin
         {
             FrmTable frmTable = winControl.ActiveForm as FrmTable;
             if (frmTable != null)
+            {
+                frmTable.OnTableCommandChanged += OnMementoCommandChanged;
                 frmTable.CellCut();
+            }
         }
 
         private void miEditCopy_Click(object sender, EventArgs e)
@@ -932,7 +990,10 @@ namespace ScadaAdmin
         {
             FrmTable frmTable = winControl.ActiveForm as FrmTable;
             if (frmTable != null)
+            {
+                frmTable.OnTableCommandChanged += OnMementoCommandChanged;
                 frmTable.CellPaste();
+            }
         }
 
         private void miEditReplace_Click(object sender, EventArgs e)
@@ -941,6 +1002,11 @@ namespace ScadaAdmin
             {
                 frmReplace = new FrmReplace();
                 frmReplace.FrmTable = winControl.ActiveForm as FrmTable;
+
+                if (frmReplace.FrmTable != null)
+                {
+                    frmReplace.FrmTable.OnTableCommandChanged += OnMementoCommandChanged;
+                }
 
                 // отображение формы замены по центру относительно главной формы
                 // FormStartPosition = CenterParent работает только для модальных форм
@@ -1118,6 +1184,42 @@ namespace ScadaAdmin
             FrmTable frmTable = winControl.ActiveForm as FrmTable;
             if (frmTable != null && frmInCnlProps.ShowInCnlProps(frmTable) == DialogResult.OK)
                 frmTable.UpdateTable();
+        }
+
+        private void btnUndo_Click(object sender, EventArgs e)
+        {
+            FrmTable frmTable = winControl.ActiveForm as FrmTable;
+            if (frmTable != null)
+            {
+                frmTable._cmdManager.Undo();
+            }
+        }
+
+        private void btnRedo_Click(object sender, EventArgs e)
+        {
+            FrmTable frmTable = winControl.ActiveForm as FrmTable;
+            if (frmTable != null)
+            {
+                frmTable._cmdManager.Redo();
+            }
+        }
+
+        private void miEditUndo_Click(object sender, EventArgs e)
+        {
+            FrmTable frmTable = winControl.ActiveForm as FrmTable;
+            if (frmTable != null)
+            {
+                frmTable._cmdManager.Undo();
+            }
+        }
+
+        private void miEditRedo_Click(object sender, EventArgs e)
+        {
+            FrmTable frmTable = winControl.ActiveForm as FrmTable;
+            if (frmTable != null)
+            {
+                frmTable._cmdManager.Redo();
+            }
         }
     }
 }

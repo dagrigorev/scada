@@ -333,6 +333,8 @@
       <Link>Lang\ScadaData.ru-RU.xml</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\redo.png" />
+    <None Include="Resources\undo.png" />
     <None Include="Connected Services\AgentSvcRef\item.disco" />
     <None Include="Connected Services\AgentSvcRef\configuration91.svcinfo" />
     <None Include="Connected Services\AgentSvcRef\configuration.svcinfo" />

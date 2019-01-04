@@ -47,6 +47,8 @@
             this.miEditCut = new System.Windows.Forms.ToolStripMenuItem();
             this.miEditCopy = new System.Windows.Forms.ToolStripMenuItem();
             this.miEditPaste = new System.Windows.Forms.ToolStripMenuItem();
+            this.miEditUndo = new System.Windows.Forms.ToolStripMenuItem();
+            this.miEditRedo = new System.Windows.Forms.ToolStripMenuItem();
             this.miEditSep = new System.Windows.Forms.ToolStripSeparator();
             this.miEditReplace = new System.Windows.Forms.ToolStripMenuItem();
             this.miView = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,6 +61,10 @@
             this.miServiceSep = new System.Windows.Forms.ToolStripSeparator();
             this.miServiceRestartServer = new System.Windows.Forms.ToolStripMenuItem();
             this.miServiceRestartComm = new System.Windows.Forms.ToolStripMenuItem();
+            this.miRemote = new System.Windows.Forms.ToolStripMenuItem();
+            this.miRemoteDownload = new System.Windows.Forms.ToolStripMenuItem();
+            this.miRemoteUpload = new System.Windows.Forms.ToolStripMenuItem();
+            this.miRemoteStatus = new System.Windows.Forms.ToolStripMenuItem();
             this.miSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.miSettingsParams = new System.Windows.Forms.ToolStripMenuItem();
             this.miSettingsLanguage = new System.Windows.Forms.ToolStripMenuItem();
@@ -77,6 +83,8 @@
             this.btnPassToServer = new System.Windows.Forms.ToolStripButton();
             this.btnBackup = new System.Windows.Forms.ToolStripButton();
             this.sepSecond = new System.Windows.Forms.ToolStripSeparator();
+            this.btnUndo = new System.Windows.Forms.ToolStripButton();
+            this.btnRedo = new System.Windows.Forms.ToolStripButton();
             this.btnCut = new System.Windows.Forms.ToolStripButton();
             this.btnCopy = new System.Windows.Forms.ToolStripButton();
             this.btnPaste = new System.Windows.Forms.ToolStripButton();
@@ -100,10 +108,6 @@
             this.miExplorerRefresh = new System.Windows.Forms.ToolStripMenuItem();
             this.contextInCnls = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.miInCnlProps = new System.Windows.Forms.ToolStripMenuItem();
-            this.miRemote = new System.Windows.Forms.ToolStripMenuItem();
-            this.miRemoteDownload = new System.Windows.Forms.ToolStripMenuItem();
-            this.miRemoteUpload = new System.Windows.Forms.ToolStripMenuItem();
-            this.miRemoteStatus = new System.Windows.Forms.ToolStripMenuItem();
             this.menuMain.SuspendLayout();
             this.toolMain.SuspendLayout();
             this.statusMain.SuspendLayout();
@@ -228,6 +232,8 @@
             this.miEditCut,
             this.miEditCopy,
             this.miEditPaste,
+            this.miEditUndo,
+            this.miEditRedo,
             this.miEditSep,
             this.miEditReplace});
             this.miEdit.Name = "miEdit";
@@ -260,6 +266,26 @@
             this.miEditPaste.Size = new System.Drawing.Size(212, 22);
             this.miEditPaste.Text = "Вставить";
             this.miEditPaste.Click += new System.EventHandler(this.miEditPaste_Click);
+            // 
+            // miEditUndo
+            // 
+            this.miEditUndo.Image = global::ScadaAdmin.Properties.Resources.undo;
+            this.miEditUndo.Name = "miEditUndo";
+            this.miEditUndo.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
+            this.miEditUndo.Size = new System.Drawing.Size(212, 22);
+            this.miEditUndo.Text = "Отменить";
+            this.miEditUndo.ToolTipText = "Отменить последнюю операцию";
+            this.miEditUndo.Click += new System.EventHandler(this.miEditUndo_Click);
+            // 
+            // miEditRedo
+            // 
+            this.miEditRedo.Image = global::ScadaAdmin.Properties.Resources.redo;
+            this.miEditRedo.Name = "miEditRedo";
+            this.miEditRedo.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
+            this.miEditRedo.Size = new System.Drawing.Size(212, 22);
+            this.miEditRedo.Text = "Вернуть";
+            this.miEditRedo.ToolTipText = "Вернуть последнюю команду";
+            this.miEditRedo.Click += new System.EventHandler(this.miEditRedo_Click);
             // 
             // miEditSep
             // 
@@ -356,6 +382,37 @@
             this.miServiceRestartComm.Text = "Перезапустить SCADA-Коммуникатор";
             this.miServiceRestartComm.Click += new System.EventHandler(this.miServiceRestart_Click);
             // 
+            // miRemote
+            // 
+            this.miRemote.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.miRemoteDownload,
+            this.miRemoteUpload,
+            this.miRemoteStatus});
+            this.miRemote.Name = "miRemote";
+            this.miRemote.Size = new System.Drawing.Size(122, 20);
+            this.miRemote.Text = "&Удаленный сервер";
+            // 
+            // miRemoteDownload
+            // 
+            this.miRemoteDownload.Name = "miRemoteDownload";
+            this.miRemoteDownload.Size = new System.Drawing.Size(221, 22);
+            this.miRemoteDownload.Text = "Скачать конфигурацию...";
+            this.miRemoteDownload.Click += new System.EventHandler(this.miRemoteDownload_Click);
+            // 
+            // miRemoteUpload
+            // 
+            this.miRemoteUpload.Name = "miRemoteUpload";
+            this.miRemoteUpload.Size = new System.Drawing.Size(221, 22);
+            this.miRemoteUpload.Text = "Передать конфигурацию...";
+            this.miRemoteUpload.Click += new System.EventHandler(this.miRemoteUpload_Click);
+            // 
+            // miRemoteStatus
+            // 
+            this.miRemoteStatus.Name = "miRemoteStatus";
+            this.miRemoteStatus.Size = new System.Drawing.Size(221, 22);
+            this.miRemoteStatus.Text = "Статус сервера...";
+            this.miRemoteStatus.Click += new System.EventHandler(this.miRemoteStatus_Click);
+            // 
             // miSettings
             // 
             this.miSettings.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -369,14 +426,14 @@
             // 
             this.miSettingsParams.Image = ((System.Drawing.Image)(resources.GetObject("miSettingsParams.Image")));
             this.miSettingsParams.Name = "miSettingsParams";
-            this.miSettingsParams.Size = new System.Drawing.Size(180, 22);
+            this.miSettingsParams.Size = new System.Drawing.Size(147, 22);
             this.miSettingsParams.Text = "Параметры...";
             this.miSettingsParams.Click += new System.EventHandler(this.miSettingsParams_Click);
             // 
             // miSettingsLanguage
             // 
             this.miSettingsLanguage.Name = "miSettingsLanguage";
-            this.miSettingsLanguage.Size = new System.Drawing.Size(180, 22);
+            this.miSettingsLanguage.Size = new System.Drawing.Size(147, 22);
             this.miSettingsLanguage.Text = "Язык...";
             this.miSettingsLanguage.Click += new System.EventHandler(this.miSettingsLanguage_Click);
             // 
@@ -458,6 +515,8 @@
             this.btnPassToServer,
             this.btnBackup,
             this.sepSecond,
+            this.btnUndo,
+            this.btnRedo,
             this.btnCut,
             this.btnCopy,
             this.btnPaste,
@@ -524,6 +583,28 @@
             // 
             this.sepSecond.Name = "sepSecond";
             this.sepSecond.Size = new System.Drawing.Size(6, 25);
+            // 
+            // btnUndo
+            // 
+            this.btnUndo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnUndo.Image = ((System.Drawing.Image)(resources.GetObject("btnUndo.Image")));
+            this.btnUndo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnUndo.Name = "btnUndo";
+            this.btnUndo.Size = new System.Drawing.Size(23, 22);
+            this.btnUndo.Text = "Отменить";
+            this.btnUndo.ToolTipText = "Отменить";
+            this.btnUndo.Click += new System.EventHandler(this.btnUndo_Click);
+            // 
+            // btnRedo
+            // 
+            this.btnRedo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnRedo.Image = ((System.Drawing.Image)(resources.GetObject("btnRedo.Image")));
+            this.btnRedo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnRedo.Name = "btnRedo";
+            this.btnRedo.Size = new System.Drawing.Size(23, 22);
+            this.btnRedo.Text = "Вернуть";
+            this.btnRedo.ToolTipText = "Вернуть";
+            this.btnRedo.Click += new System.EventHandler(this.btnRedo_Click);
             // 
             // btnCut
             // 
@@ -745,37 +826,6 @@
             this.miInCnlProps.Text = "Свойства канала";
             this.miInCnlProps.Click += new System.EventHandler(this.miInCnlProps_Click);
             // 
-            // miRemote
-            // 
-            this.miRemote.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.miRemoteDownload,
-            this.miRemoteUpload,
-            this.miRemoteStatus});
-            this.miRemote.Name = "miRemote";
-            this.miRemote.Size = new System.Drawing.Size(122, 20);
-            this.miRemote.Text = "&Удаленный сервер";
-            // 
-            // miRemoteDownload
-            // 
-            this.miRemoteDownload.Name = "miRemoteDownload";
-            this.miRemoteDownload.Size = new System.Drawing.Size(221, 22);
-            this.miRemoteDownload.Text = "Скачать конфигурацию...";
-            this.miRemoteDownload.Click += new System.EventHandler(this.miRemoteDownload_Click);
-            // 
-            // miRemoteUpload
-            // 
-            this.miRemoteUpload.Name = "miRemoteUpload";
-            this.miRemoteUpload.Size = new System.Drawing.Size(221, 22);
-            this.miRemoteUpload.Text = "Передать конфигурацию...";
-            this.miRemoteUpload.Click += new System.EventHandler(this.miRemoteUpload_Click);
-            // 
-            // miRemoteStatus
-            // 
-            this.miRemoteStatus.Name = "miRemoteStatus";
-            this.miRemoteStatus.Size = new System.Drawing.Size(221, 22);
-            this.miRemoteStatus.Text = "Статус сервера...";
-            this.miRemoteStatus.Click += new System.EventHandler(this.miRemoteStatus_Click);
-            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -888,6 +938,10 @@
         private System.Windows.Forms.ToolStripMenuItem miRemoteDownload;
         private System.Windows.Forms.ToolStripMenuItem miRemoteUpload;
         private System.Windows.Forms.ToolStripMenuItem miRemoteStatus;
+        private System.Windows.Forms.ToolStripButton btnUndo;
+        private System.Windows.Forms.ToolStripButton btnRedo;
+        private System.Windows.Forms.ToolStripMenuItem miEditUndo;
+        private System.Windows.Forms.ToolStripMenuItem miEditRedo;
     }
 }
 
