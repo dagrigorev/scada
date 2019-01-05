@@ -24,6 +24,7 @@
  */
 
 using Scada;
+using Scada.Data.DataFactory;
 using Scada.UI;
 using Scada.UI.CommandManager;
 using ScadaAdmin.Remote;
@@ -107,7 +108,7 @@ namespace ScadaAdmin
 
         private Settings settings;       // настройки приложения
         private FrmReplace frmReplace;   // форма замены
-
+        private FileBackupCreator backupFactory; // Файбрика для производства бэкапов
 
         /// <summary>
         /// Конструктор
@@ -120,6 +121,7 @@ namespace ScadaAdmin
             preventDblClick = false;
             settings = AppData.Settings;
             frmReplace = null;
+            backupFactory = new FileBackupCreator();
         }
 
 
@@ -692,7 +694,10 @@ namespace ScadaAdmin
             bool success = settings.LoadAppSettings(out errMsg);
             lblBaseSdfFile.Text = settings.AppSett.BaseSDFFile;
             if (success)
+            {
+                backupFactory?.Make(settings.AppSett.BaseSDFFile);
                 Connect(true);
+            }
             else
                 ScadaUiUtils.ShowError(errMsg);
         }
@@ -1188,37 +1193,39 @@ namespace ScadaAdmin
 
         private void btnUndo_Click(object sender, EventArgs e)
         {
-            FrmTable frmTable = winControl.ActiveForm as FrmTable;
-            if (frmTable != null)
-            {
-                frmTable._cmdManager.Undo();
-            }
+            Undo();
         }
 
         private void btnRedo_Click(object sender, EventArgs e)
         {
-            FrmTable frmTable = winControl.ActiveForm as FrmTable;
-            if (frmTable != null)
-            {
-                frmTable._cmdManager.Redo();
-            }
+            Redo();
         }
 
         private void miEditUndo_Click(object sender, EventArgs e)
         {
-            FrmTable frmTable = winControl.ActiveForm as FrmTable;
-            if (frmTable != null)
-            {
-                frmTable._cmdManager.Undo();
-            }
+            Undo();
         }
 
         private void miEditRedo_Click(object sender, EventArgs e)
         {
+            Redo();
+        }
+
+        private void Undo()
+        {
             FrmTable frmTable = winControl.ActiveForm as FrmTable;
             if (frmTable != null)
             {
-                frmTable._cmdManager.Redo();
+                frmTable.Undo();
+            }
+        }
+
+        private void Redo()
+        {
+            FrmTable frmTable = winControl.ActiveForm as FrmTable;
+            if (frmTable != null)
+            {
+                frmTable.Redo();
             }
         }
     }

@@ -50,6 +50,10 @@
     <Compile Include="Cache.cs" />
     <Compile Include="Client\ISupportLoading.cs" />
     <Compile Include="Client\ViewCache.cs" />
+    <Compile Include="Data\DataFactory\BackupCreator.cs" />
+    <Compile Include="Data\DataFactory\BackupProduct.cs" />
+    <Compile Include="Data\DataFactory\FileBackup.cs" />
+    <Compile Include="Data\DataFactory\FileBackupCreator.cs" />
     <Compile Include="Data\Models\CnlStatProps.cs" />
     <Compile Include="Data\Models\CommLine.cs" />
     <Compile Include="Data\Models\Obj.cs" />

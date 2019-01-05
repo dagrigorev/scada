@@ -28,10 +28,14 @@ namespace Scada.UI.CommandManager
                 case Memento<Dictionary<int, DataRow>, DataTable>.ActionType.Undo:
                      if(CmdType == CommandManager.CommandType.Remove)
                         UndoRemove();
+                    if (CmdType == CommandManager.CommandType.Add)
+                        RedoRemove();
                     break;
                 case Memento<Dictionary<int, DataRow>, DataTable>.ActionType.Redo:
                     if(CmdType == CommandManager.CommandType.Remove)
                         RedoRemove();
+                    if (CmdType == CommandManager.CommandType.Add)
+                        UndoRemove();
                     break;
                 default:
                     break;
@@ -43,14 +47,7 @@ namespace Scada.UI.CommandManager
             // TODO: Изменить строки или добавить новые
             foreach (var dataUnit in MementoData)
             {
-                if (Target.Rows.Contains(dataUnit.Key))
-                {
-                    dataUnit.Value.ItemArray.CopyTo(Target.Rows[dataUnit.Key].ItemArray, 0);
-                }
-                else
-                {
-                    Target.Rows.Add(dataUnit.Value);
-                }
+                Target.Rows.Add(dataUnit.Value);
             }
         }
 

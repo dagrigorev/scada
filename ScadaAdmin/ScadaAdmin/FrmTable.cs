@@ -56,8 +56,11 @@ namespace ScadaAdmin
         private bool modDTColExists; // существует столбец времени изменения
         private Memento<Dictionary<int, DataRow>, DataTable> _memento;
 
-        public CommandManager _cmdManager = new CommandManager(6);
+        private CommandManager _cmdManager = new CommandManager(10);
         public event CommandManager.CommandChanged OnTableCommandChanged;
+
+        private bool TableLoaded { get; set; }
+        private bool NewRowBeginEdit { get; set; }
 
         /// <summary>
         /// Конструктор
@@ -79,6 +82,7 @@ namespace ScadaAdmin
             _memento = null;
 
             _cmdManager.OnCommandChanged += OnMementoCommandChanged;
+            TableLoaded = false;
         }
 
 
@@ -92,9 +96,44 @@ namespace ScadaAdmin
         /// <summary>
         /// Сохранить изменения в БД
         /// </summary>
+        public void Save(DataRow newRow = null)
+        {
+            string errMsg;
+            TableLoaded = false;
+            saveOk = Tables.UpdateData(Table, out errMsg);
+            if (saveOk)
+            {
+                SetModified(false);
+                if (NewRowBeginEdit && newRow != null)
+                {
+                    // TODO: Add new row command here
+                    var mementoData = new Dictionary<int, DataRow>();
+                    mementoData.Add(Table.Rows.IndexOf(newRow), newRow);
+                    var currentMemento = new DataTableMemento(mementoData, Table);
+                    var command = new MementoCommand<Dictionary<int, DataRow>, DataTable>(_memento, currentMemento);
+                    command.Type = CommandManager.CommandType.Add;
+                    if (_cmdManager.Invoke(command))
+                        _memento = currentMemento;
+                }
+            }
+            else
+            {
+                SetModified(true);
+                AppUtils.ProcError(errMsg);
+            }
+
+            NewRowBeginEdit = false;
+            saveOccured = true;
+            TableLoaded = true;
+        }
+
+        /// <summary>
+        /// Сохранить изменения в БД
+        /// </summary>
         public void Save()
         {
             string errMsg;
+            TableLoaded = false;
             saveOk = Tables.UpdateData(Table, out errMsg);
             if (saveOk)
             {
@@ -105,7 +144,10 @@ namespace ScadaAdmin
                 SetModified(true);
                 AppUtils.ProcError(errMsg);
             }
+
+            NewRowBeginEdit = false;
             saveOccured = true;
+            TableLoaded = true;
         }
 
         #endregion
@@ -356,6 +398,7 @@ namespace ScadaAdmin
         {
             if (ValidateCell(dataGridView.CurrentCell, true))
             {
+                //TableLoaded = false;
                 // если ячейка находится в режиме редактирования и её значение изменено,
                 // то вызывается dataTable_RowChanged и происходит сохранение данных
                 saveOccured = false;
@@ -364,17 +407,21 @@ namespace ScadaAdmin
 
                 if (!saveOccured)
                     Save();
-
+                
                 dataGridView.Invalidate();
+                //TableLoaded = true;
                 return saveOk;
             }
             else
+            {
                 return false;
+            }
         }
 
 
         private void FrmTable_Load(object sender, EventArgs e)
         {
+            TableLoaded = false;
             // перевод формы
             Translator.TranslateForm(this, "ScadaAdmin.FrmTable");
             if (bindingNavigatorCountItem.Text.Contains("{0}"))
@@ -414,7 +461,7 @@ namespace ScadaAdmin
 
                 SetModified(false);
             }
-
+            TableLoaded = true;
             _memento = new DataTableMemento(new Dictionary<int, DataRow>(), Table);
         }
 
@@ -422,7 +469,7 @@ namespace ScadaAdmin
         private void dataTable_RowChanged(object sender, DataRowChangeEventArgs e)
         {
             if (e.Action == DataRowAction.Add || e.Action == DataRowAction.Change)
-                Save();
+                Save(e.Row);
         }
 
         private void dataTable_RowDeleted(object sender, DataRowChangeEventArgs e)
@@ -686,12 +733,24 @@ namespace ScadaAdmin
             return rowCopy;
         }
 
+        private DataRow CloneRow(DataRow clonableRow)
+        {
+            if (clonableRow == null) return null;;
+            var rowCopy = clonableRow.Table.NewRow();
+            var objArray = new object[clonableRow.ItemArray.Length];
+            clonableRow.ItemArray.CopyTo(objArray, 0);
+            rowCopy.ItemArray = objArray;
+            return rowCopy;
+        }
+
         private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
         {
             DataGridViewSelectedRowCollection selectedRows = dataGridView.SelectedRows;
             if (MessageBox.Show(selectedRows.Count > 1 ? AppPhrases.DeleteRowsConfirm : AppPhrases.DeleteRowConfirm, 
                 CommonPhrases.QuestionCaption, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) == DialogResult.Yes)
             {
+                NewRowBeginEdit = false;
+                TableLoaded = false;
                 Table.RowDeleted -= dataTable_RowDeleted;
 
                 var mementoData = new Dictionary<int, DataRow>();
@@ -731,6 +790,7 @@ namespace ScadaAdmin
                 Save();
                 Table.RowDeleted += dataTable_RowDeleted;
                 bindingSource.ResetBindings(false);
+                TableLoaded = true;
             }
         }
 
@@ -755,6 +815,39 @@ namespace ScadaAdmin
         private void bindingNavigatorAutoResizeItem_Click(object sender, EventArgs e)
         {
             ScadaUiUtils.AutoResizeColumns(dataGridView);
+        }
+
+        private void dataGridView_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            //if (TableLoaded) NewRowBeginEdit = true;
+        }
+
+        /// <summary>
+        /// Выполняет отмену команды с помощью менеджера Undo/Redo
+        /// </summary>
+        public void Undo()
+        {
+            if (_cmdManager != null)
+            {
+                TableLoaded = false;
+                NewRowBeginEdit = false;
+
+                _cmdManager.Undo();
+            }
+        }
+
+        /// <summary>
+        /// Выполняет вовзврат команды с помощью менеджера Undo/Redo
+        /// </summary>
+        public void Redo()
+        {
+            if (_cmdManager != null)
+            {
+                TableLoaded = false;
+                NewRowBeginEdit = false;
+
+                _cmdManager.Redo();
+            }
         }
     }
 }

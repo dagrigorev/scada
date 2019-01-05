@@ -428,7 +428,7 @@ namespace Scada.UI
             {
                 object[] attrs = memInfo[0].GetCustomAttributes(typeof(EnumDisplayText), false);
                 if (attrs != null && attrs.Length > 0)
-                    return ((EnumDisplayText)attrs[0]).Text;
+                    return ((EnumDisplayText)attrs[0]).Description;
             }
             return en.ToString();
         }
