@@ -622,6 +622,7 @@ namespace ScadaAdmin
 
         private void SetUndoRedoHistory(CommandManager commandManager)
         {
+            //FIXME: Исправить некорректное отображение подменю 
             if (miEditUndo.Enabled && btnUndo.Enabled)
             {
                 var undoHistory = commandManager.GetUndoDescription();
@@ -1218,6 +1219,7 @@ namespace ScadaAdmin
             {
                 frmTable.Undo();
             }
+
         }
 
         private void Redo()

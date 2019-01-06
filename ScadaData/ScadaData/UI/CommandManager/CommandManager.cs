@@ -78,7 +78,8 @@ namespace Scada.UI.CommandManager
             if (_redoStack.Count == 0) return;
             var command = _redoStack.Pop();
             command.Redo();
-            _undoStack.Push(command);
+            // FIXME: Проверить необходимость восстановления команды после Redo
+            //_undoStack.Push(command);
 
             if (OnCommandChanged != null)
                 OnCommandChanged(this, new CommandManagerEventArgs()

@@ -819,7 +819,9 @@ namespace ScadaAdmin
 
         private void dataGridView_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
-            //if (TableLoaded) NewRowBeginEdit = true;
+            // FIXME: Исправить условие
+            if (TableLoaded)
+                NewRowBeginEdit = true;
         }
 
         /// <summary>
@@ -833,9 +835,10 @@ namespace ScadaAdmin
                 NewRowBeginEdit = false;
 
                 _cmdManager.Undo();
+                Update();
             }
         }
-
+         
         /// <summary>
         /// Выполняет вовзврат команды с помощью менеджера Undo/Redo
         /// </summary>
@@ -847,6 +850,7 @@ namespace ScadaAdmin
                 NewRowBeginEdit = false;
 
                 _cmdManager.Redo();
+                Update();
             }
         }
     }
