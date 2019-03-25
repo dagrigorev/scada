@@ -12,6 +12,8 @@
     <link href="~/plugins/Scheme/css/schemeform.min.css" rel="stylesheet" type="text/css" />
     <%= compStyles %>
     <script type="text/javascript" src="../../lib/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="../../lib/react/react.development.js"></script>
+    <script type="text/javascript" src="../../lib/react/react-dom.development.js"></script>
     <script type="text/javascript" src="../../js/api/utils.js"></script>
     <script type="text/javascript" src="../../js/api/ajaxqueue.js"></script>
     <script type="text/javascript" src="../../js/api/clientapi.js"></script>

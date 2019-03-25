@@ -55,7 +55,7 @@ namespace Scada.Web {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMainMenuTab;
+        protected global::System.Web.UI.WebControls. lblMainMenuTab;
         
         /// <summary>
         /// lblMainExplorerTab control.
@@ -64,7 +64,7 @@ namespace Scada.Web {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMainExplorerTab;
+        protected global::System.Web.UI.WebControls. lblMainExplorerTab;
         
         /// <summary>
         /// lblMainCollapseMenu control.
@@ -73,7 +73,7 @@ namespace Scada.Web {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMainCollapseMenu;
+        protected global::System.Web.UI.WebControls. lblMainCollapseMenu;
         
         /// <summary>
         /// cphMainContent control.

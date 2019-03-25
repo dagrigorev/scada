@@ -18,6 +18,9 @@
     <link href="~/css/mastermain.min.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="<%= ResolveClientUrl("~/lib/jquery/jquery.min.js") %>"></script>
     <script type="text/javascript" src="<%= ResolveClientUrl("~/lib/bootstrap/js/bootstrap.min.js") %>"></script>
+    <!-- Dmitry Grigorev edit -->
+    <script type="text/javascript" src="<%= ResolveClientUrl("~/lib/react/react.development.js") %>"></script>
+    <script type="text/javascript" src="<%= ResolveClientUrl("~/lib/react/react-dom.development.js") %>"></script>
     <script type="text/javascript" src="<%= ResolveClientUrl("~/js/api/utils.js") %>"></script>
     <script type="text/javascript" src="<%= ResolveClientUrl("~/js/api/ajaxqueue.js") %>"></script>
     <script type="text/javascript" src="<%= ResolveClientUrl("~/js/api/clientapi.js") %>"></script>
@@ -25,6 +28,8 @@
     <script type="text/javascript" src="<%= ResolveClientUrl("~/js/controls/popup.js") %>"></script>
     <script type="text/javascript" src="<%= ResolveClientUrl("~/js/controls/treeview.js") %>"></script>
     <script type="text/javascript" src="<%= ResolveClientUrl("~/js/dialogs/dialogs.js") %>"></script>
+    <!-- Dmitry Grigorev edit -->
+    <script src='<%= ResolveClientUrl("~/js/app.jsx") %>'></script>
     <script type="text/javascript">
         var scada = scada || {};
         scada.env = {
@@ -51,10 +56,15 @@
             </div>
         </div>
         <div id="divMainLeftPane" class="main-shell">
+        <!-- Dmitry Grigorev edit -->
             <div id="divMainTabs">
-                <div id="divMainMenuTab" class="tab selected"><asp:Label ID="lblMainMenuTab" runat="server" Text="Main Menu"></asp:Label></div>
-                <div id="divMainExplorerTab" class="tab"><asp:Label ID="lblMainExplorerTab" runat="server" Text="Views"></asp:Label></div>
-            </div>
+                <div id="divMainMenuTab" class="tab selected">
+                    <asp: Label ID="lblMainMenuTab" runat="server" Text="Main Menu"></asp: Label>
+                </div>
+                <div id="divMainExplorerTab" class="tab">
+                    <asp: Label ID="lblMainExplorerTab" runat="server" Text="Views"></asp: Label >
+                </div >
+            </div >
             <div id="divMainMenu" class="tool-window">
                 <%= GenMainMenuHtml() %>
             </div>
@@ -62,7 +72,8 @@
                 <%= GenExplorerHtml() %>
             </div>
             <div id="divMainCollapseLeftPaneBtn">
-                <i class="fa fa-chevron-circle-left"></i><asp:Label ID="lblMainCollapseMenu" runat="server" Text="Collapse menu"></asp:Label>
+                <i class="fa fa-chevron-circle-left"></i>
+                <asp: Label ID="lblMainCollapseMenu" runat="server" Text="Collapse menu"></asp: Label >
             </div>
         </div>
         <div id="divMainContent" class="main-content">

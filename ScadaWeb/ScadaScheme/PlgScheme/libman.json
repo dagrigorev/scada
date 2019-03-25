@@ -1,0 +1,14 @@
+{
+  "version": "1.0",
+  "defaultProvider": "filesystem",
+  "libraries": [
+    {
+      "library": "lib/react/",
+      "destination": "lib/react/",
+      "files": [
+        "react-dom.development.js",
+        "react.development.js"
+      ]
+    }
+  ]
+}
