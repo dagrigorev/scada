@@ -313,8 +313,10 @@ namespace Scada.Data.Tables
             else
             {
                 // создание и добавление нового среза в таблицу
-                srez = new SrezTable.Srez(srezDT, srcSrez);
-                srez.State = DataRowState.Added;
+                srez = new SrezTable.Srez(srezDT, srcSrez)
+                {
+                    State = DataRowState.Added
+                };
                 AddedSrezList.Add(srez);
                 SrezList.Add(srezDT, srez);
             }
@@ -356,8 +358,7 @@ namespace Scada.Data.Tables
         {
             foreach (SrezTableLight.Srez lightSrez in SrezList.Values)
             {
-                Srez srez = lightSrez as Srez;
-                if (srez != null)
+                if (lightSrez is Srez srez)
                     srez.State = DataRowState.Unchanged;
             }
 

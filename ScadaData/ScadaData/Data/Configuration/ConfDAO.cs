@@ -59,10 +59,7 @@ namespace Scada.Data.Configuration
         /// </summary>
         public ConfDAO(BaseTables baseTables)
         {
-            if (baseTables == null)
-                throw new ArgumentNullException("baseTables");
-
-            this.baseTables = baseTables;
+            this.baseTables = baseTables ?? throw new ArgumentNullException("baseTables");
         }
 
 
@@ -106,30 +103,32 @@ namespace Scada.Data.Configuration
 
             foreach (DataRow inCnlRow in tblInCnl.Rows)
             {
-                InCnlProps cnlProps = new InCnlProps();
+                InCnlProps cnlProps = new InCnlProps
+                {
 
-                // определение свойств, не использующих внешних ключей
-                cnlProps.CnlNum = (int)inCnlRow["CnlNum"];
-                cnlProps.CnlName = (string)inCnlRow["Name"];
-                cnlProps.CnlTypeID = (int)inCnlRow["CnlTypeID"];
-                cnlProps.ObjNum = (int)inCnlRow["ObjNum"];
-                cnlProps.KPNum = (int)inCnlRow["KPNum"];
-                cnlProps.Signal = (int)inCnlRow["Signal"];
-                cnlProps.FormulaUsed = (bool)inCnlRow["FormulaUsed"];
-                cnlProps.Formula = (string)inCnlRow["Formula"];
-                cnlProps.Averaging = (bool)inCnlRow["Averaging"];
-                cnlProps.ParamID = (int)inCnlRow["ParamID"];
-                cnlProps.FormatID = (int)inCnlRow["FormatID"];
-                cnlProps.UnitID = (int)inCnlRow["UnitID"];
-                cnlProps.CtrlCnlNum = (int)inCnlRow["CtrlCnlNum"];
-                cnlProps.EvEnabled = (bool)inCnlRow["EvEnabled"];
-                cnlProps.EvSound = (bool)inCnlRow["EvSound"];
-                cnlProps.EvOnChange = (bool)inCnlRow["EvOnChange"];
-                cnlProps.EvOnUndef = (bool)inCnlRow["EvOnUndef"];
-                cnlProps.LimLowCrash = (double)inCnlRow["LimLowCrash"];
-                cnlProps.LimLow = (double)inCnlRow["LimLow"];
-                cnlProps.LimHigh = (double)inCnlRow["LimHigh"];
-                cnlProps.LimHighCrash = (double)inCnlRow["LimHighCrash"];
+                    // определение свойств, не использующих внешних ключей
+                    CnlNum = (int)inCnlRow["CnlNum"],
+                    CnlName = (string)inCnlRow["Name"],
+                    CnlTypeID = (int)inCnlRow["CnlTypeID"],
+                    ObjNum = (int)inCnlRow["ObjNum"],
+                    KPNum = (int)inCnlRow["KPNum"],
+                    Signal = (int)inCnlRow["Signal"],
+                    FormulaUsed = (bool)inCnlRow["FormulaUsed"],
+                    Formula = (string)inCnlRow["Formula"],
+                    Averaging = (bool)inCnlRow["Averaging"],
+                    ParamID = (int)inCnlRow["ParamID"],
+                    FormatID = (int)inCnlRow["FormatID"],
+                    UnitID = (int)inCnlRow["UnitID"],
+                    CtrlCnlNum = (int)inCnlRow["CtrlCnlNum"],
+                    EvEnabled = (bool)inCnlRow["EvEnabled"],
+                    EvSound = (bool)inCnlRow["EvSound"],
+                    EvOnChange = (bool)inCnlRow["EvOnChange"],
+                    EvOnUndef = (bool)inCnlRow["EvOnUndef"],
+                    LimLowCrash = (double)inCnlRow["LimLowCrash"],
+                    LimLow = (double)inCnlRow["LimLow"],
+                    LimHigh = (double)inCnlRow["LimHigh"],
+                    LimHighCrash = (double)inCnlRow["LimHighCrash"]
+                };
 
                 // определение наименования объекта
                 int objRowInd = viewObj.Find(cnlProps.ObjNum);
@@ -200,19 +199,21 @@ namespace Scada.Data.Configuration
 
             foreach (DataRow ctrlCnlRow in tblCtrlCnl.Rows)
             {
-                CtrlCnlProps ctrlCnlProps = new CtrlCnlProps();
+                CtrlCnlProps ctrlCnlProps = new CtrlCnlProps
+                {
 
-                // определение свойств, не использующих внешних ключей
-                ctrlCnlProps.CtrlCnlNum = (int)ctrlCnlRow["CtrlCnlNum"];
-                ctrlCnlProps.CtrlCnlName = (string)ctrlCnlRow["Name"];
-                ctrlCnlProps.CmdTypeID = (int)ctrlCnlRow["CmdTypeID"];
-                ctrlCnlProps.ObjNum = (int)ctrlCnlRow["ObjNum"];
-                ctrlCnlProps.KPNum = (int)ctrlCnlRow["KPNum"];
-                ctrlCnlProps.CmdNum = (int)ctrlCnlRow["CmdNum"];
-                ctrlCnlProps.CmdValID = (int)ctrlCnlRow["CmdValID"];
-                ctrlCnlProps.FormulaUsed = (bool)ctrlCnlRow["FormulaUsed"];
-                ctrlCnlProps.Formula = (string)ctrlCnlRow["Formula"];
-                ctrlCnlProps.EvEnabled = (bool)ctrlCnlRow["EvEnabled"];
+                    // определение свойств, не использующих внешних ключей
+                    CtrlCnlNum = (int)ctrlCnlRow["CtrlCnlNum"],
+                    CtrlCnlName = (string)ctrlCnlRow["Name"],
+                    CmdTypeID = (int)ctrlCnlRow["CmdTypeID"],
+                    ObjNum = (int)ctrlCnlRow["ObjNum"],
+                    KPNum = (int)ctrlCnlRow["KPNum"],
+                    CmdNum = (int)ctrlCnlRow["CmdNum"],
+                    CmdValID = (int)ctrlCnlRow["CmdValID"],
+                    FormulaUsed = (bool)ctrlCnlRow["FormulaUsed"],
+                    Formula = (string)ctrlCnlRow["Formula"],
+                    EvEnabled = (bool)ctrlCnlRow["EvEnabled"]
+                };
 
                 // определение наименования объекта
                 int objRowInd = viewObj.Find(ctrlCnlProps.ObjNum);
@@ -267,7 +268,7 @@ namespace Scada.Data.Configuration
         public SortedList<int, CnlStatProps> GetCnlStatProps()
         {
             DataTable tblEvType = baseTables.EvTypeTable;
-            int statusCnt = tblEvType.Rows.Count;
+            _ = tblEvType.Rows.Count;
             SortedList<int, CnlStatProps> cnlStatPropsList = new SortedList<int, CnlStatProps>(tblEvType.Rows.Count);
 
             foreach (DataRow row in tblEvType.Rows)

@@ -38,7 +38,7 @@ namespace Scada
     /// </summary>
     public class FileListener
     {
-        private string fileName; // имя ожидаемого файла
+        private readonly string fileName; // имя ожидаемого файла
         private Thread thread;   // поток ожидания файла
 
         /// <summary>
@@ -62,8 +62,10 @@ namespace Scada
         {
             FileFound = false;
             this.fileName = fileName;
-            thread = new Thread(new ThreadStart(WaitForFile));
-            thread.Priority = ThreadPriority.BelowNormal;
+            thread = new Thread(new ThreadStart(WaitForFile))
+            {
+                Priority = ThreadPriority.BelowNormal
+            };
             thread.Start();
         }
 

@@ -1,0 +1,14 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "react@16.8.6",
+      "destination": "plugins/ReactRenderer/assets/js/react/"
+    },
+    {
+      "library": "react-dom@16.8.6",
+      "destination": "plugins/ReactRenderer/assets/react-dom/"
+    }
+  ]
+}

@@ -74,16 +74,9 @@ namespace Scada.Client
         /// </summary>
         public ViewCache(ServerComm serverComm, DataAccess dataAccess, Log log)
         {
-            if (serverComm == null)
-                throw new ArgumentNullException("serverComm");
-            if (dataAccess == null)
-                throw new ArgumentNullException("dataAccess");
-            if (log == null)
-                throw new ArgumentNullException("log");
-
-            this.serverComm = serverComm;
-            this.dataAccess = dataAccess;
-            this.log = log;
+            this.serverComm = serverComm ?? throw new ArgumentNullException("serverComm");
+            this.dataAccess = dataAccess ?? throw new ArgumentNullException("dataAccess");
+            this.log = log ?? throw new ArgumentNullException("log");
 
             Cache = new Cache<int, BaseView>(StorePeriod, Capacity);
         }
@@ -249,7 +242,7 @@ namespace Scada.Client
             try
             {
                 Cache<int, BaseView>.CacheItem cacheItem = Cache.GetItem(viewID, DateTime.UtcNow);
-                BaseView view = cacheItem == null ? null : cacheItem.Value;
+                BaseView view = cacheItem?.Value;
 
                 if (view == null && throwOnFail)
                     throw new ScadaException(string.Format(Localization.UseRussian ?

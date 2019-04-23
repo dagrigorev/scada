@@ -208,6 +208,7 @@ namespace Scada.Comm.Channels
         /// <summary>
         /// Инициализировать канал связи
         /// </summary>
+        [System.Obsolete]
         public override void Init(SortedList<string, string> commCnlParams, List<KPLogic> kpList)
         {
             // вызов метода базового класса

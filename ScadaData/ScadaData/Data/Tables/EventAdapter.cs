@@ -132,21 +132,23 @@ namespace Scada.Data.Tables
         /// </summary>
         protected EventTableLight.Event CreateEvent(DataRowView rowView)
         {
-            EventTableLight.Event ev = new EventTableLight.Event();
-            ev.Number = ConvertToInt(rowView["Number"]);
-            ev.DateTime = ConvertToDateTime(rowView["DateTime"]);
-            ev.ObjNum = ConvertToInt(rowView["ObjNum"]);
-            ev.KPNum = ConvertToInt(rowView["KPNum"]);
-            ev.ParamID = ConvertToInt(rowView["ParamID"]);
-            ev.CnlNum = ConvertToInt(rowView["CnlNum"]);
-            ev.OldCnlVal = ConvertToDouble(rowView["OldCnlVal"]);
-            ev.OldCnlStat = ConvertToInt(rowView["OldCnlStat"]);
-            ev.NewCnlVal = ConvertToDouble(rowView["NewCnlVal"]);
-            ev.NewCnlStat = ConvertToInt(rowView["NewCnlStat"]);
-            ev.Checked = ConvertToBoolean(rowView["Checked"]);
-            ev.UserID = ConvertToInt(rowView["UserID"]);
-            ev.Descr = Convert.ToString(rowView["Descr"]);
-            ev.Data = Convert.ToString(rowView["Data"]);
+            EventTableLight.Event ev = new EventTableLight.Event
+            {
+                Number = ConvertToInt(rowView["Number"]),
+                DateTime = ConvertToDateTime(rowView["DateTime"]),
+                ObjNum = ConvertToInt(rowView["ObjNum"]),
+                KPNum = ConvertToInt(rowView["KPNum"]),
+                ParamID = ConvertToInt(rowView["ParamID"]),
+                CnlNum = ConvertToInt(rowView["CnlNum"]),
+                OldCnlVal = ConvertToDouble(rowView["OldCnlVal"]),
+                OldCnlStat = ConvertToInt(rowView["OldCnlStat"]),
+                NewCnlVal = ConvertToDouble(rowView["NewCnlVal"]),
+                NewCnlStat = ConvertToInt(rowView["NewCnlStat"]),
+                Checked = ConvertToBoolean(rowView["Checked"]),
+                UserID = ConvertToInt(rowView["UserID"]),
+                Descr = Convert.ToString(rowView["Descr"]),
+                Data = Convert.ToString(rowView["Data"])
+            };
             return ev;
         }
 
@@ -251,9 +253,7 @@ namespace Scada.Data.Tables
                 }
 
                 // заполнение таблицы из файла
-                stream = ioStream == null ?
-                    new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite) :
-                    ioStream;
+                stream = ioStream ?? new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
                 reader = new BinaryReader(stream);
 
                 Byte[] eventBuf = new byte[EventDataSize]; // буфер данных события
@@ -265,8 +265,10 @@ namespace Scada.Data.Tables
                     if (readSize == EventDataSize)
                     {
                         // создание события на основе считанных данных
-                        EventTableLight.Event ev = new EventTableLight.Event();
-                        ev.Number = evNum;
+                        EventTableLight.Event ev = new EventTableLight.Event
+                        {
+                            Number = evNum
+                        };
                         evNum++;
 
                         double time = BitConverter.ToDouble(eventBuf, 0);
@@ -318,7 +320,6 @@ namespace Scada.Data.Tables
             }
             catch
             {
-                fillTime = DateTime.MinValue;
                 throw;
             }
             finally
@@ -374,9 +375,7 @@ namespace Scada.Data.Tables
 
             try
             {
-                stream = ioStream == null ?
-                   new FileStream(fileName, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite) :
-                   ioStream;
+                stream = ioStream ?? new FileStream(fileName, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite);
                 writer = new BinaryWriter(stream);
 
                 // запись изменённых событий
@@ -441,9 +440,7 @@ namespace Scada.Data.Tables
 
             try
             {
-                stream = ioStream == null ?
-                   new FileStream(fileName, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite) :
-                   ioStream;
+                stream = ioStream ?? new FileStream(fileName, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite);
                 writer = new BinaryWriter(stream);
 
                 // установка позиции записи кратной размеру данных события
@@ -478,9 +475,7 @@ namespace Scada.Data.Tables
 
             try
             {
-                stream = ioStream == null ?
-                   new FileStream(fileName, FileMode.Open, FileAccess.Write, FileShare.ReadWrite) :
-                   ioStream;
+                stream = ioStream ?? new FileStream(fileName, FileMode.Open, FileAccess.Write, FileShare.ReadWrite);
                 writer = new BinaryWriter(stream);
 
                 stream.Seek(0, SeekOrigin.End);

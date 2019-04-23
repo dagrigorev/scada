@@ -171,6 +171,8 @@ namespace Scada.Web.Shell
                     return new MenuItem(WebPhrases.RegMenuItem, "", 400);
                 case StandardMenuItems.Plugins:
                     return new MenuItem(WebPhrases.PluginsMenuItem, "", 500);
+                case StandardMenuItems.Network:
+                    return new MenuItem(WebPhrases.NetworkMenuItem, "", 600);
                 default: // StandardMenuItem.About
                     return new MenuItem(WebPhrases.AboutMenuItem, "~/About.aspx", SortOrders.Last);
             }

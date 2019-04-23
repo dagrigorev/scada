@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.202
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KpModbus", "KpModbus\KpModbus.csproj", "{7CBF4A4B-E1A2-428E-8F68-EDD2FCE3088B}"
 EndProject
@@ -16,6 +16,16 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KpEmail", "KpEmail\KpEmail.csproj", "{1529A2A2-53FC-446B-AE13-FF564C4DEC32}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KpHttpNotif", "KpHttpNotif\KpHttpNotif.csproj", "{866BA66F-804A-4C6B-B0D2-8D8064AE1EEC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KpNetwork", "KpNetwork\KpNetwork.csproj", "{B43F1C45-B694-4576-A2D7-85402040BA0A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScadaCommCommon", "..\ScadaCommCommon\ScadaCommCommon.csproj", "{7BAEAE0E-4694-41D7-BC29-F205AEF69741}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScadaData", "..\..\ScadaData\ScadaData\ScadaData.csproj", "{C5DC293F-13CA-435F-A7DB-4BA91639C292}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Log", "..\..\Log\Log\Log.csproj", "{A05EA084-E509-4025-9241-6A5BE5C2B328}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScadaNetwork", "ScadaNetwork\ScadaNetwork.csproj", "{872972CC-0991-4A80-B387-D24560E1F79B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,8 +61,31 @@ Global
 		{866BA66F-804A-4C6B-B0D2-8D8064AE1EEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{866BA66F-804A-4C6B-B0D2-8D8064AE1EEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{866BA66F-804A-4C6B-B0D2-8D8064AE1EEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B43F1C45-B694-4576-A2D7-85402040BA0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B43F1C45-B694-4576-A2D7-85402040BA0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B43F1C45-B694-4576-A2D7-85402040BA0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B43F1C45-B694-4576-A2D7-85402040BA0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BAEAE0E-4694-41D7-BC29-F205AEF69741}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BAEAE0E-4694-41D7-BC29-F205AEF69741}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BAEAE0E-4694-41D7-BC29-F205AEF69741}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BAEAE0E-4694-41D7-BC29-F205AEF69741}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5DC293F-13CA-435F-A7DB-4BA91639C292}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5DC293F-13CA-435F-A7DB-4BA91639C292}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5DC293F-13CA-435F-A7DB-4BA91639C292}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5DC293F-13CA-435F-A7DB-4BA91639C292}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A05EA084-E509-4025-9241-6A5BE5C2B328}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A05EA084-E509-4025-9241-6A5BE5C2B328}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A05EA084-E509-4025-9241-6A5BE5C2B328}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A05EA084-E509-4025-9241-6A5BE5C2B328}.Release|Any CPU.Build.0 = Release|Any CPU
+		{872972CC-0991-4A80-B387-D24560E1F79B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{872972CC-0991-4A80-B387-D24560E1F79B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{872972CC-0991-4A80-B387-D24560E1F79B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{872972CC-0991-4A80-B387-D24560E1F79B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {86389542-0DAA-4087-B62B-3E8CB68ADC79}
 	EndGlobalSection
 EndGlobal

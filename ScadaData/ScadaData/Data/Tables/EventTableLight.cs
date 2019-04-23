@@ -345,8 +345,7 @@ namespace Scada.Data.Tables
         /// </summary>
         public List<Event> GetFilteredEvents(EventFilter filter)
         {
-            bool reversed;
-            return GetFilteredEvents(filter, 0, 0, out reversed);
+            return GetFilteredEvents(filter, 0, 0, out _);
         }
 
         /// <summary>
@@ -363,12 +362,12 @@ namespace Scada.Data.Tables
             int startEvInd = Math.Max(0, startEvNum - 1);
             int allEventsCnt = allEvents.Count;
 
-            Action<int> addEventAction = delegate(int i) 
+            void addEventAction(int i)
             {
                 Event ev = allEvents[i];
                 if (filter.Satisfied(ev))
                     filteredEvents.Add(ev);
-            };
+            }
 
             if (lastCount > 0)
             {

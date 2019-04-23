@@ -226,9 +226,7 @@ namespace Scada.Data.Tables
 
             try
             {
-                stream = ioStream == null ?
-                    new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite) :
-                    ioStream;
+                stream = ioStream ?? new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
                 reader = new BinaryReader(stream);
 
                 // считывание заголовка
@@ -250,12 +248,14 @@ namespace Scada.Data.Tables
                         // заполение определения поля из буфера
                         if (readSize == FieldDefSize)
                         {
-                            FieldDef fieldDef = new FieldDef();
-                            fieldDef.DataType = fieldDefBuf[0];
-                            fieldDef.DataSize = BitConverter.ToUInt16(fieldDefBuf, 1);
-                            fieldDef.MaxStrLen = BitConverter.ToUInt16(fieldDefBuf, 3);
-                            fieldDef.AllowNull = fieldDefBuf[5] > 0;
-                            fieldDef.Name = (string)BytesToObj(fieldDefBuf, 6, DataTypes.String);
+                            FieldDef fieldDef = new FieldDef
+                            {
+                                DataType = fieldDefBuf[0],
+                                DataSize = BitConverter.ToUInt16(fieldDefBuf, 1),
+                                MaxStrLen = BitConverter.ToUInt16(fieldDefBuf, 3),
+                                AllowNull = fieldDefBuf[5] > 0,
+                                Name = (string)BytesToObj(fieldDefBuf, 6, DataTypes.String)
+                            };
                             if (string.IsNullOrEmpty(fieldDef.Name))
                                 throw new ScadaException("Field name must not be empty.");
                             fieldDefs[i] = fieldDef;
@@ -274,8 +274,10 @@ namespace Scada.Data.Tables
                     {
                         foreach (FieldDef fieldDef in fieldDefs)
                         {
-                            DataColumn column = new DataColumn(fieldDef.Name);
-                            column.AllowDBNull = fieldDef.AllowNull;
+                            DataColumn column = new DataColumn(fieldDef.Name)
+                            {
+                                AllowDBNull = fieldDef.AllowNull
+                            };
 
                             switch (fieldDef.DataType)
                             {
@@ -370,9 +372,7 @@ namespace Scada.Data.Tables
 
             try
             {
-                stream = ioStream == null ?
-                    new FileStream(fileName, FileMode.Create, FileAccess.Write, FileShare.ReadWrite) :
-                    ioStream;
+                stream = ioStream ?? new FileStream(fileName, FileMode.Create, FileAccess.Write, FileShare.ReadWrite);
                 writer = new BinaryWriter(stream, Encoding.Default);
 
                 // запись заголовка

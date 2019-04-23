@@ -61,6 +61,10 @@ namespace Scada.Web.Shell
         /// <summary>
         ///  О приложении
         /// </summary>
-        About = 32
+        About = 32,
+        /// <summary>
+        /// Сеть
+        /// </summary>
+        Network = 64
     }
 }

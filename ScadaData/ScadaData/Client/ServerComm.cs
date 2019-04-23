@@ -137,7 +137,7 @@ namespace Scada.Client
         /// <summary>
         /// Метод записи в журнал работы
         /// </summary>
-        protected Log.WriteLineDelegate writeToLog { get; set; }
+        protected Log.WriteLineDelegate WriteToLog { get; set; }
         /// <summary>
         /// TCP-клиент для обмена данными со SCADA-Сервером
         /// </summary>
@@ -195,7 +195,7 @@ namespace Scada.Client
         {
             this.commSettings = commSettings;
             this.log = log;
-            this.writeToLog = null;
+            this.WriteToLog = null;
         }
 
         /// <summary>
@@ -206,7 +206,7 @@ namespace Scada.Client
         {
             this.commSettings = commSettings;
             this.log = null;
-            this.writeToLog = writeToLog;
+            this.WriteToLog = writeToLog;
         }
 
 
@@ -344,8 +344,10 @@ namespace Scada.Client
         {
             if (log != null)
                 log.WriteAction(text, actType);
-            else if (writeToLog != null)
-                writeToLog(text);
+            else
+            {
+                WriteToLog?.Invoke(text);
+            }
         }
 
         /// <summary>
@@ -366,12 +368,14 @@ namespace Scada.Client
                 catch { }
 
                 // создание, настройка и попытка установки соединения
-                tcpClient = new TcpClient();
-                tcpClient.NoDelay = true;            // sends data immediately upon calling NetworkStream.Write
-                tcpClient.ReceiveBufferSize = 16384; // 16 кБ
-                tcpClient.SendBufferSize = 8192;     // 8 кБ, размер по умолчанию
-                tcpClient.SendTimeout = TcpSendTimeout;
-                tcpClient.ReceiveTimeout = TcpReceiveTimeout;
+                tcpClient = new TcpClient
+                {
+                    NoDelay = true,            // sends data immediately upon calling NetworkStream.Write
+                    ReceiveBufferSize = 16384, // 16 кБ
+                    SendBufferSize = 8192,     // 8 кБ, размер по умолчанию
+                    SendTimeout = TcpSendTimeout,
+                    ReceiveTimeout = TcpReceiveTimeout
+                };
 
                 if (ipAddress == null)
                     tcpClient.Connect(commSettings.ServerHost, commSettings.ServerPort);
@@ -996,9 +1000,11 @@ namespace Scada.Client
                         {
                             if (ReceiveFileToStream(Dirs.BaseDAT, tableName, memStream))
                             {
-                                BaseAdapter adapter = new BaseAdapter();
-                                adapter.Stream = memStream;
-                                adapter.TableName = tableName;
+                                BaseAdapter adapter = new BaseAdapter
+                                {
+                                    Stream = memStream,
+                                    TableName = tableName
+                                };
                                 adapter.Fill(dataTable, false);
                                 result = true;
                             }
@@ -1057,9 +1063,11 @@ namespace Scada.Client
                         {
                             if (ReceiveFileToStream(dir, tableName, memStream))
                             {
-                                SrezAdapter adapter = new SrezAdapter();
-                                adapter.Stream = memStream;
-                                adapter.TableName = tableName;
+                                SrezAdapter adapter = new SrezAdapter
+                                {
+                                    Stream = memStream,
+                                    TableName = tableName
+                                };
                                 adapter.Fill(srezTableLight);
                                 result = true;
                             }
@@ -1235,9 +1243,11 @@ namespace Scada.Client
                         {
                             if (ReceiveFileToStream(Dirs.Events, tableName, memStream))
                             {
-                                EventAdapter adapter = new EventAdapter();
-                                adapter.Stream = memStream;
-                                adapter.TableName = tableName;
+                                EventAdapter adapter = new EventAdapter
+                                {
+                                    Stream = memStream,
+                                    TableName = tableName
+                                };
                                 adapter.Fill(eventTableLight);
                                 result = true;
                             }

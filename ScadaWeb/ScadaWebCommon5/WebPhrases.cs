@@ -80,6 +80,7 @@ namespace Scada.Web
         public static string RegMenuItem { get; private set; }
         public static string PluginsMenuItem { get; private set; }
         public static string AboutMenuItem { get; private set; }
+        public static string NetworkMenuItem { get; private set; }
 
         // Словарь Scada.Web.Shell.RememberMe
         public static string SecurityViolation { get; private set; }
@@ -126,6 +127,7 @@ namespace Scada.Web
             RegMenuItem = Localization.Dict.GetEmptyPhrase("RegMenuItem");
             PluginsMenuItem = Localization.Dict.GetEmptyPhrase("PluginsMenuItem");
             AboutMenuItem = Localization.Dict.GetEmptyPhrase("AboutMenuItem");
+            NetworkMenuItem = "Network";
 
             SecurityViolation = Localization.Dict.GetEmptyPhrase("SecurityViolation");
 
@@ -195,6 +197,7 @@ namespace Scada.Web
                 RegMenuItem = dict.GetPhrase("RegMenuItem", RegMenuItem);
                 PluginsMenuItem = dict.GetPhrase("PluginsMenuItem", PluginsMenuItem);
                 AboutMenuItem = dict.GetPhrase("AboutMenuItem", AboutMenuItem);
+                NetworkMenuItem = dict.GetPhrase("NetworkMenuItem", NetworkMenuItem);
             }
 
             if (Localization.Dictionaries.TryGetValue("Scada.Web.Shell.RememberMe", out dict))

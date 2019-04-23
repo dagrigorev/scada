@@ -121,13 +121,8 @@ namespace Scada.Client
         /// </summary>
         public DataCache(ServerComm serverComm, Log log)
         {
-            if (serverComm == null)
-                throw new ArgumentNullException("serverComm");
-            if (log == null)
-                throw new ArgumentNullException("log");
-
-            this.serverComm = serverComm;
-            this.log = log;
+            this.serverComm = serverComm ?? throw new ArgumentNullException("serverComm");
+            this.log = log ?? throw new ArgumentNullException("log");
 
             baseLock = new object();
             curDataLock = new object();

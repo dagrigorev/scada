@@ -187,14 +187,14 @@ namespace Scada.Web.Plugins
                 Assembly assembly = null;
                 try
                 {
-                    assembly = Assembly.LoadFrom(path);
+                    assembly = Assembly.LoadFile(path);
                 }
                 catch (Exception ex)
                 {
                     errMsg = string.Format(Localization.UseRussian ?
                         "Ошибка при загрузке библиотеки плагина {0}:{1}{2}" :
                         "Error loading the plugin assembly {0}:{1}{2}", 
-                        path, Environment.NewLine, ex.Message);
+                        path, Environment.NewLine, ex.Message + "\\" + ex.Source + "\\" + ex.StackTrace);
                     return null;
                 }
 
@@ -212,7 +212,7 @@ namespace Scada.Web.Plugins
                     errMsg = string.Format(Localization.UseRussian ?
                         "Не удалось получить тип плагина {0} из библиотеки {1}:{2}{3}" :
                         "Unable to get the plugin type {0} from the assembly {1}:{2}{3}",
-                        typeName, path, Environment.NewLine, ex.Message);
+                        typeName, path, Environment.NewLine, ex.Message + "\\" + ex.Source + "\\" + ex.StackTrace);
                     return null;
                 }
 
@@ -228,7 +228,7 @@ namespace Scada.Web.Plugins
                     errMsg = string.Format(Localization.UseRussian ?
                         "Ошибка при создании экземпляра класса плагина {0} из библиотеки {1}:{2}{3}" :
                         "Error creating plugin class instance {0} from the assembly {1}:{2}{3}",
-                        type, path, Environment.NewLine, ex.Message);
+                        type, path, Environment.NewLine, ex.Message + "\\" + ex.Source + "\\" + ex.StackTrace);
                     return null;
                 }
             }
@@ -237,7 +237,7 @@ namespace Scada.Web.Plugins
                 errMsg = string.Format(Localization.UseRussian ?
                     "Ошибка при создании плагина из библиотеки {0}:{1}{2}" :
                     "Error creating plugin from the assembly {0}:{1}{2}", 
-                    path, Environment.NewLine, ex.Message);
+                    path, Environment.NewLine, ex.Message + "\\" + ex.Source + "\\" + ex.StackTrace);
                 return null;
             }
         }

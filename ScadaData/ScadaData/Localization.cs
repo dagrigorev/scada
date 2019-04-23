@@ -280,8 +280,7 @@ namespace Scada
             else if (defaultOnError)
             {
                 fileName = Dict.GetFileName(directory, fileNamePrefix, DefaultCultureName);
-                string errMsg2;
-                LoadDictionaries(fileName, out errMsg2);
+                LoadDictionaries(fileName, out _);
                 return false;
             }
             else

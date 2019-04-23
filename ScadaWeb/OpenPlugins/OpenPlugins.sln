@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
-VisualStudioVersion = 16.0.28803.156
+VisualStudioVersion = 16.0.28803.202
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlgConfig", "PlgConfig\PlgConfig.csproj", "{BA16503A-0E79-42C1-94C7-F690A0DA145E}"
 EndProject
@@ -24,6 +24,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScadaData", "..\..\ScadaData\ScadaData\ScadaData.csproj", "{C5DC293F-13CA-435F-A7DB-4BA91639C292}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepBuilder", "..\..\Report\RepBuilder\RepBuilder.csproj", "{59393DBD-5EDD-46D0-8157-0C6151621D5E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlgReactRendererCommon", "ReactRendererCommon\PlgReactRendererCommon.csproj", "{6E03D8CD-DDD1-433F-99F3-2A1E269B7B16}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlgReactRenderer", "PlgReactRenderer\PlgReactRenderer.csproj", "{265B107E-939E-4232-AF6F-A4C26102ED8E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlgNetworkDiagnostic", "PlgNetworkDiagnostic\PlgNetworkDiagnostic.csproj", "{690D649B-4E60-4475-918E-DFCD84F4A4BF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +81,18 @@ Global
 		{59393DBD-5EDD-46D0-8157-0C6151621D5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59393DBD-5EDD-46D0-8157-0C6151621D5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59393DBD-5EDD-46D0-8157-0C6151621D5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E03D8CD-DDD1-433F-99F3-2A1E269B7B16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E03D8CD-DDD1-433F-99F3-2A1E269B7B16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E03D8CD-DDD1-433F-99F3-2A1E269B7B16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E03D8CD-DDD1-433F-99F3-2A1E269B7B16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{265B107E-939E-4232-AF6F-A4C26102ED8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{265B107E-939E-4232-AF6F-A4C26102ED8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{265B107E-939E-4232-AF6F-A4C26102ED8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{265B107E-939E-4232-AF6F-A4C26102ED8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{690D649B-4E60-4475-918E-DFCD84F4A4BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{690D649B-4E60-4475-918E-DFCD84F4A4BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{690D649B-4E60-4475-918E-DFCD84F4A4BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{690D649B-4E60-4475-918E-DFCD84F4A4BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -26,9 +26,11 @@ namespace Scada.Data.DataFactory
                 File.Delete(files.Last().FullName);
             }
 
-            var fb = new FileBackup();
-            fb.SourceFilePath = sourceFilePath;
-            fb.FilePath = sourceFilePath + "." + DateTime.Now.Ticks.ToString() + ".bak";
+            var fb = new FileBackup
+            {
+                SourceFilePath = sourceFilePath,
+                FilePath = sourceFilePath + "." + DateTime.Now.Ticks.ToString() + ".bak"
+            };
             fb.Copy();
             return fb;
         }

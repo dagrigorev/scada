@@ -61,13 +61,8 @@ namespace Scada.Client
         /// </summary>
         public DataAccess(DataCache dataCache, Log log)
         {
-            if (dataCache == null)
-                throw new ArgumentNullException("dataCache");
-            if (log == null)
-                throw new ArgumentNullException("log");
-
-            this.dataCache = dataCache;
-            this.log = log;
+            this.dataCache = dataCache ?? throw new ArgumentNullException("dataCache");
+            this.log = log ?? throw new ArgumentNullException("log");
         }
 
 
@@ -382,9 +377,11 @@ namespace Scada.Client
 
                     if (rowInd >= 0)
                     {
-                        UserProps userProps = new UserProps(userID);
-                        userProps.UserName = (string)viewUser[rowInd]["Name"];
-                        userProps.RoleID = (int)viewUser[rowInd]["RoleID"];
+                        UserProps userProps = new UserProps(userID)
+                        {
+                            UserName = (string)viewUser[rowInd]["Name"],
+                            RoleID = (int)viewUser[rowInd]["RoleID"]
+                        };
                         userProps.RoleName = GetRoleName(userProps.RoleID);
                         return userProps;
                     }
@@ -505,8 +502,7 @@ namespace Scada.Client
         /// </summary>
         public SrezTableLight.CnlData GetCurCnlData(int cnlNum)
         {
-            DateTime dataAge;
-            return GetCurCnlData(cnlNum, out dataAge);
+            return GetCurCnlData(cnlNum, out _);
         }
 
         /// <summary>

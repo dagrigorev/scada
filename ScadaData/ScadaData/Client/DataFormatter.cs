@@ -129,8 +129,7 @@ namespace Scada.Client
         {
             string text;
             string textWithUnit;
-            bool textIsNumber;
-            FormatCnlVal(val, stat, cnlProps, null, null, out text, out textWithUnit, out textIsNumber);
+            FormatCnlVal(val, stat, cnlProps, null, null, out text, out textWithUnit, out _);
             return appendUnit ? textWithUnit : text;
         }
 
@@ -140,8 +139,7 @@ namespace Scada.Client
         public void FormatCnlVal(double val, int stat, InCnlProps cnlProps, 
             out string text, out string textWithUnit)
         {
-            bool textIsNumber;
-            FormatCnlVal(val, stat, cnlProps, null, null, out text, out textWithUnit, out textIsNumber);
+            FormatCnlVal(val, stat, cnlProps, null, null, out text, out textWithUnit, out _);
         }
 
         /// <summary>

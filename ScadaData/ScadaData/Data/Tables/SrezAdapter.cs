@@ -180,9 +180,7 @@ namespace Scada.Data.Tables
                 }
 
                 // заполнение объекта данными
-                stream = ioStream == null ?
-                    new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite) :
-                    ioStream;
+                stream = ioStream ?? new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
                 reader = new BinaryReader(stream);
 
                 DateTime date = ExtractDate(tableName); // определение даты срезов
@@ -336,7 +334,6 @@ namespace Scada.Data.Tables
             }
             catch
             {
-                fillTime = DateTime.MinValue;
                 throw;
             }
             finally
@@ -411,9 +408,7 @@ namespace Scada.Data.Tables
 
             try
             {
-                stream = ioStream == null ?
-                   new FileStream(fileName, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite) :
-                   ioStream;
+                stream = ioStream ?? new FileStream(fileName, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite);
                 writer = new BinaryWriter(stream);
 
                 writer.Write(GetSrezDescrBuf(srez.SrezDescr));
@@ -446,9 +441,7 @@ namespace Scada.Data.Tables
 
             try
             {
-                stream = ioStream == null ?
-                   new FileStream(fileName, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite) :
-                   ioStream;
+                stream = ioStream ?? new FileStream(fileName, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite);
                 writer = new BinaryWriter(stream);
 
                 // запись изменённых срезов
@@ -483,7 +476,7 @@ namespace Scada.Data.Tables
                 }
 
                 // запись добавленных срезов
-                SrezTable.SrezDescr prevSrezDescr = lastSrez == null ? null : lastSrez.SrezDescr;
+                SrezTable.SrezDescr prevSrezDescr = lastSrez?.SrezDescr;
 
                 foreach (SrezTable.Srez srez in srezTable.AddedSrezList)
                 {

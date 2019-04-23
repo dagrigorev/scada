@@ -202,7 +202,7 @@ namespace Scada
             {
                 CacheItem cacheItem = GetItem(key, nowDT);
                 if (cacheItem == null)
-                    cacheItem = AddValue(key, default(TValue), DateTime.MinValue, nowDT);
+                    cacheItem = AddValue(key, default, DateTime.MinValue, nowDT);
                 return cacheItem;
             }
         }
