@@ -199,3 +199,8 @@ FakesAssemblies/
 
 # Unignore the configuration database files
 !Base/data/*.sdf
+
+*.js.map
+built/*.js
+built/
+node_modules/
