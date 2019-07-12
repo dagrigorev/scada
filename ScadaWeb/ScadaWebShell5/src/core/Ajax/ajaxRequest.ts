@@ -18,7 +18,7 @@ export class AjaxRequest {
      * Sets done callback
      * @param doneCallback
      */
-    public done(doneCallback: () => void): AjaxRequest {
+    public done(doneCallback: (data, textStatus, jqXHR) => void): AjaxRequest {
         this.doneCallback = doneCallback;
         return this;
     }
@@ -27,7 +27,7 @@ export class AjaxRequest {
      * Sets fail callback
      * @param failCallback
      */
-    public fail(failCallback: () => void): AjaxRequest {
+    public fail(failCallback: (data, textStatus, jqXHR) => void): AjaxRequest {
         this.failCallback = failCallback;
         return this;
     }
@@ -36,7 +36,7 @@ export class AjaxRequest {
      * Sets always callback
      * @param alwaysCallback
      */
-    public always(alwaysCallback: () => void): AjaxRequest {
+    public always(alwaysCallback: (data, textStatus, jqXHR) => void): AjaxRequest {
         this.alwaysCallback = alwaysCallback;
         return this;
     }
