@@ -414,7 +414,6 @@
     <Folder Include="built\" />
     <Folder Include="log\" />
     <Folder Include="plugins\" />
-    <Folder Include="src\views\" />
     <Folder Include="storage\" />
   </ItemGroup>
   <ItemGroup>
@@ -432,11 +431,27 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="src\core\Ajax\ajaxQueue.ts" />
-    <TypeScriptCompile Include="src\core\Ajax\ajaxQueueLocator.ts" />
-    <TypeScriptCompile Include="src\core\Ajax\ajaxRequest.ts" />
-    <TypeScriptCompile Include="src\core\Ajax\index.ts" />
-    <TypeScriptCompile Include="src\core\Ajax\Settings.ts" />
+    <TypeScriptCompile Include="src\core\ajax\AjaxData.ts" />
+    <TypeScriptCompile Include="src\core\ajax\ajaxQueue.ts" />
+    <TypeScriptCompile Include="src\core\ajax\ajaxQueueLocator.ts" />
+    <TypeScriptCompile Include="src\core\ajax\ajaxRequest.ts" />
+    <TypeScriptCompile Include="src\core\ajax\index.ts" />
+    <TypeScriptCompile Include="src\core\ajax\Settings.ts" />
+    <TypeScriptCompile Include="src\core\api\ClientAPI.ts" />
+    <TypeScriptCompile Include="src\core\api\EventTypes.ts" />
+    <TypeScriptCompile Include="src\core\api\Export.ts" />
+    <TypeScriptCompile Include="src\core\api\index.ts" />
+    <TypeScriptCompile Include="src\core\api\ViewHub.ts" />
+    <TypeScriptCompile Include="src\core\types\CnlData.ts" />
+    <TypeScriptCompile Include="src\core\types\CnlFilter.ts" />
+    <TypeScriptCompile Include="src\core\types\Event.ts" />
+    <TypeScriptCompile Include="src\core\types\HourPeriod.ts" />
+    <TypeScriptCompile Include="src\core\types\index.ts" />
+    <TypeScriptCompile Include="src\utils\index.ts" />
+    <TypeScriptCompile Include="src\utils\utils.ts" />
+    <TypeScriptCompile Include="src\views\controls\popup.ts" />
+    <TypeScriptCompile Include="src\views\dialogs\calendar.ts" />
+    <TypeScriptCompile Include="src\views\dialogs\dialogs.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

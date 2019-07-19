@@ -29,6 +29,7 @@ using Scada.Scheme.Model.DataTypes;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Windows.Forms;
 using System.Xml;
 
 namespace Scada.Scheme
@@ -44,7 +45,6 @@ namespace Scada.Scheme
         /// </summary>
         protected int maxComponentID;
 
-        
         /// <summary>
         /// Конструктор
         /// </summary>
@@ -55,6 +55,7 @@ namespace Scada.Scheme
             SchemeDoc = new SchemeDocument();
             Components = new SortedList<int, BaseComponent>();
             LoadErrors = new List<string>();
+            Filter = null;
         }
 
 
@@ -62,6 +63,8 @@ namespace Scada.Scheme
         /// Получить свойства документа схемы
         /// </summary>
         public SchemeDocument SchemeDoc { get; protected set; }
+
+        public ComponentFilter Filter { get; set; }
 
         /// <summary>
         /// Получить компоненты схемы, ключ - идентификатор компонента
@@ -134,6 +137,15 @@ namespace Scada.Scheme
                         component = new UnknownComponent() { XmlNode = compNode };
                         if (errNodeNames.Add(compNode.Name))
                             LoadErrors.Add(errMsg);
+                    }
+
+                    if (Filter != null)
+                    {
+                        Filter.IncrementCount(component.TypeName);
+                        if (Filter.IsCountGreater(component.TypeName))
+                        {
+                            throw new Exception("LimitException");
+                        }
                     }
 
                     // загрузка компонента и добавление его в представление

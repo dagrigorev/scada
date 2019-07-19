@@ -31,6 +31,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Text;
+using System.Windows.Forms;
 using Utils;
 
 namespace Scada.Scheme.Editor
@@ -111,6 +112,7 @@ namespace Scada.Scheme.Editor
         private List<BaseComponent> selComponents; // выбранные компоненты схемы
         private List<BaseComponent> clipboard;     // буфер обмена, содержащий скопированные компоненты
 
+        private ComponentFilter componentFilter;
 
         /// <summary>
         /// Конструктор, ограничивающий создание объекта без параметров
@@ -143,6 +145,10 @@ namespace Scada.Scheme.Editor
             FileName = "";
             History = new History(log);
             NewComponentTypeName = "";
+
+            componentFilter = new ComponentFilter();
+            componentFilter.AddNewComponent("Scada.Scheme.Model.DynamicText", 10);
+            componentFilter.AddNewComponent("Scada.Web.AppCode.SchNetComp.NetworkDevice", 15);
         }
 
 
@@ -291,6 +297,8 @@ namespace Scada.Scheme.Editor
             ClearChanges();
             ClearSelComponents();
             SchemeView = new SchemeView();
+            SchemeView.Filter = componentFilter;
+
             bool loadOK;
 
             if (string.IsNullOrEmpty(fileName))
@@ -302,7 +310,8 @@ namespace Scada.Scheme.Editor
             {
                 lock (SchemeView.SyncRoot)
                 {
-                    loadOK = SchemeView.LoadFromFile(fileName, out errMsg);
+                    loadOK = SchemeView.LoadFromFile(fileName,
+                                                     out errMsg);
                 }
 
                 if (!loadOK)
@@ -313,6 +322,7 @@ namespace Scada.Scheme.Editor
             Modified = false;
             History.Clear();
             PointerMode = PointerModes.Select;
+
             SubscribeToSchemeChanges();
             OnSelectionChanged();
             return loadOK;
@@ -323,13 +333,14 @@ namespace Scada.Scheme.Editor
         /// </summary>
         private void SubscribeToSchemeChanges()
         {
-            if (SchemeView != null)
+            if (SchemeView == null)
             {
-                SchemeView.SchemeDoc.ItemChanged += Scheme_ItemChanged;
-
-                foreach (BaseComponent component in SchemeView.Components.Values)
-                    component.ItemChanged += Scheme_ItemChanged;
+                return;
             }
+            SchemeView.SchemeDoc.ItemChanged += Scheme_ItemChanged;
+
+            foreach (BaseComponent component in SchemeView.Components.Values)
+                component.ItemChanged += Scheme_ItemChanged;
         }
 
         /// <summary>
@@ -381,6 +392,8 @@ namespace Scada.Scheme.Editor
                             case SchemeChangeTypes.ComponentAdded:
                                 // создание копии компонента
                                 BaseComponent addedComponent = ((BaseComponent)change.ChangedObject).Clone();
+
+                                
 
                                 // добавление компонента на схему
                                 SchemeView.Components[addedComponent.ID] = addedComponent;
@@ -729,6 +742,15 @@ namespace Scada.Scheme.Editor
 
                 // создание компонента
                 BaseComponent component = compManager.CreateComponent(NewComponentTypeName);
+
+                if (componentFilter != null)
+                {
+                    componentFilter.IncrementCount(NewComponentTypeName);
+                    if (componentFilter.IsCountGreater(NewComponentTypeName))
+                    {
+                        return false;
+                    }
+                }
 
                 if (component == null)
                 {
