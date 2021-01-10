@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f692d1a1-d239-4ae3-a32c-030632492100" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../Models/ScadaModels/.idea/.idea.ScadaModels/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Models/ScadaModels/.idea/.idea.ScadaModels/.idea/indexLayout.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Models/ScadaModels/.idea/.idea.ScadaModels/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Models/ScadaModels/.idea/.idea.ScadaModels/.idea/projectSettingsUpdater.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Models/ScadaModels/.idea/.idea.ScadaModels/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Models/ScadaModels/.idea/.idea.ScadaModels/riderModule.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.ScadaUserService/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.ScadaUserService/.idea/contentModel.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.ScadaUserService/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.ScadaUserService/.idea/indexLayout.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.ScadaUserService/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.ScadaUserService/.idea/projectSettingsUpdater.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.ScadaUserService/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.ScadaUserService/riderModule.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ScadaUserService.Contracts/UserAuthenticateOutContract.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ScadaUserService.Contracts/UserRegistrationInContract.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ScadaUserService.Repository/UserRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ScadaUserService/IUserService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ScadaUserService/MappingUser.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ScadaUserService/UserServiceConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ScadaWeb/.idea/.idea.ScadaWeb5/riderModule.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ScadaWeb/ScadaWebApi/Controllers/Users.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ScadaWeb/ScadaWeb5.sln" beforeDir="false" afterPath="$PROJECT_DIR$/../../ScadaWeb/ScadaWeb5.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ScadaWeb/ScadaWebShell5/css/about.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../ScadaWeb/ScadaWebShell5/css/about.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ScadaWeb/ScadaWebShell5/css/common/contentform.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../ScadaWeb/ScadaWebShell5/css/common/contentform.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ScadaWeb/ScadaWebShell5/css/controls/popup.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../ScadaWeb/ScadaWebShell5/css/controls/popup.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ScadaWeb/ScadaWebShell5/css/controls/treeview.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../ScadaWeb/ScadaWebShell5/css/controls/treeview.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ScadaWeb/ScadaWebShell5/css/dialogs/confirm.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../ScadaWeb/ScadaWebShell5/css/dialogs/confirm.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ScadaWeb/ScadaWebShell5/css/mastermain.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../ScadaWeb/ScadaWebShell5/css/mastermain.css" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/ScadaUserService/ScadaUserService.csproj" />
+        <option value="$PROJECT_DIR$/ScadaUserService.Repository/ScadaUserService.Repository.csproj" />
+        <option value="$PROJECT_DIR$/ScadaUserService.Contracts/ScadaUserService.Contracts.csproj" />
+        <option value="$PROJECT_DIR$/ScadaUserService.Contracts/Class1.cs" />
+        <option value="$PROJECT_DIR$/ScadaUserService.Contracts/UserAuthenticateInContract.cs" />
+        <option value="$PROJECT_DIR$/ScadaUserService.Contracts/UserAuthenticateOutContract.cs" />
+        <option value="$PROJECT_DIR$/ScadaUserService.Repository/Class1.cs" />
+        <option value="$PROJECT_DIR$/ScadaUserService.Contracts/UserRegistrationInContract.cs" />
+        <option value="$PROJECT_DIR$/ScadaUserService/Class1.cs" />
+        <option value="$PROJECT_DIR$/ScadaUserService/IUserService.cs" />
+        <option value="$PROJECT_DIR$/../../Models/ScadaModels/ScadaModels/User.cs" />
+        <option value="$PROJECT_DIR$/ScadaUserService.Repository/IUserRepository.cs" />
+        <option value="$PROJECT_DIR$/ScadaUserService.Repository/UserRepository.cs" />
+        <option value="$PROJECT_DIR$/ScadaUserService/UserService.cs" />
+        <option value="$PROJECT_DIR$/ScadaUserService/MappingUsers.cs" />
+        <option value="$PROJECT_DIR$/ScadaUserService/MappingUser.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1mrp5hg1bEvu1j05wiYduZr7gQ5" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f692d1a1-d239-4ae3-a32c-030632492100" name="Default Changelist" comment="" />
+      <created>1610261385971</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1610261385971</updated>
+      <workItem from="1610261392526" duration="677000" />
+      <workItem from="1610262489077" duration="855000" />
+      <workItem from="1610264557742" duration="1286000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="361" y="144" key="Rider.ProjectTemplateDialog.Size" timestamp="1610261754011">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="144" key="Rider.ProjectTemplateDialog.Size/0.0.1536.824@0.0.1536.824" timestamp="1610261754011" />
+    <state x="554" y="102" key="RiderGenerateDialog" timestamp="1610263275798">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="554" y="102" key="RiderGenerateDialog/0.0.1536.824@0.0.1536.824" timestamp="1610263275798" />
+  </component>
+</project>

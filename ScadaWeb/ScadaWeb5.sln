@@ -11,6 +11,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScadaData", "..\ScadaData\S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Log", "..\Log\Log\Log.csproj", "{A05EA084-E509-4025-9241-6A5BE5C2B328}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScadaWebApi", "ScadaWebApi\ScadaWebApi.csproj", "{75E5E566-2790-4863-A2D0-799BC09BE660}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{57483322-0B0E-42D0-991D-0489CB240D4E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScadaUserService", "..\ScadaServices\ScadaUserService\ScadaUserService\ScadaUserService.csproj", "{BDE24AF7-C6C6-4A55-98B8-E380AF80DFF2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScadaUserService.Contracts", "..\ScadaServices\ScadaUserService\ScadaUserService.Contracts\ScadaUserService.Contracts.csproj", "{91095F93-59A6-49E7-9F38-EC6ED824D227}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScadaUserService.Repository", "..\ScadaServices\ScadaUserService\ScadaUserService.Repository\ScadaUserService.Repository.csproj", "{F02E7165-FF66-48C8-A693-B92F9ED7431D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,11 +43,32 @@ Global
 		{A05EA084-E509-4025-9241-6A5BE5C2B328}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A05EA084-E509-4025-9241-6A5BE5C2B328}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A05EA084-E509-4025-9241-6A5BE5C2B328}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75E5E566-2790-4863-A2D0-799BC09BE660}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75E5E566-2790-4863-A2D0-799BC09BE660}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75E5E566-2790-4863-A2D0-799BC09BE660}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75E5E566-2790-4863-A2D0-799BC09BE660}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDE24AF7-C6C6-4A55-98B8-E380AF80DFF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDE24AF7-C6C6-4A55-98B8-E380AF80DFF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDE24AF7-C6C6-4A55-98B8-E380AF80DFF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDE24AF7-C6C6-4A55-98B8-E380AF80DFF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91095F93-59A6-49E7-9F38-EC6ED824D227}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91095F93-59A6-49E7-9F38-EC6ED824D227}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91095F93-59A6-49E7-9F38-EC6ED824D227}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91095F93-59A6-49E7-9F38-EC6ED824D227}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F02E7165-FF66-48C8-A693-B92F9ED7431D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F02E7165-FF66-48C8-A693-B92F9ED7431D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F02E7165-FF66-48C8-A693-B92F9ED7431D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F02E7165-FF66-48C8-A693-B92F9ED7431D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8EC7E742-EAB0-413D-9FE9-11888AF73A24}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BDE24AF7-C6C6-4A55-98B8-E380AF80DFF2} = {57483322-0B0E-42D0-991D-0489CB240D4E}
+		{91095F93-59A6-49E7-9F38-EC6ED824D227} = {57483322-0B0E-42D0-991D-0489CB240D4E}
+		{F02E7165-FF66-48C8-A693-B92F9ED7431D} = {57483322-0B0E-42D0-991D-0489CB240D4E}
 	EndGlobalSection
 EndGlobal

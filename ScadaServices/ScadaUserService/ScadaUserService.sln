@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScadaUserService", "ScadaUserService\ScadaUserService.csproj", "{688C51B1-1220-41DC-A485-0104197CCD58}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScadaUserService.Contracts", "ScadaUserService.Contracts\ScadaUserService.Contracts.csproj", "{9B25C116-43DB-4DE0-B709-B1E87A845881}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScadaUserService.Repository", "ScadaUserService.Repository\ScadaUserService.Repository.csproj", "{4044DE3F-182B-4F88-AA3E-41A302CCDA09}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScadaModels", "..\..\Models\ScadaModels\ScadaModels\ScadaModels.csproj", "{8CB18B40-FBB3-4C6C-A623-73C4DA9A0FFC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{688C51B1-1220-41DC-A485-0104197CCD58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{688C51B1-1220-41DC-A485-0104197CCD58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{688C51B1-1220-41DC-A485-0104197CCD58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{688C51B1-1220-41DC-A485-0104197CCD58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B25C116-43DB-4DE0-B709-B1E87A845881}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B25C116-43DB-4DE0-B709-B1E87A845881}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B25C116-43DB-4DE0-B709-B1E87A845881}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B25C116-43DB-4DE0-B709-B1E87A845881}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4044DE3F-182B-4F88-AA3E-41A302CCDA09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4044DE3F-182B-4F88-AA3E-41A302CCDA09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4044DE3F-182B-4F88-AA3E-41A302CCDA09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4044DE3F-182B-4F88-AA3E-41A302CCDA09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CB18B40-FBB3-4C6C-A623-73C4DA9A0FFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CB18B40-FBB3-4C6C-A623-73C4DA9A0FFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CB18B40-FBB3-4C6C-A623-73C4DA9A0FFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CB18B40-FBB3-4C6C-A623-73C4DA9A0FFC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

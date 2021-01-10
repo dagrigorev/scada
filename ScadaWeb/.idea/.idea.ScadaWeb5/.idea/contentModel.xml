@@ -1,0 +1,492 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\dm-gr\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\dm-gr\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_ScadaWeb5.-289063971.00" t="ExcludeRecursive" />
+    <e p="D:\Projects\scada\Log\Log" t="IncludeRecursive">
+      <e p="bin" t="ExcludeRecursive" />
+      <e p="ILog.cs" t="Include" />
+      <e p="Log.cs" t="Include" />
+      <e p="Log.csproj" t="IncludeRecursive" />
+      <e p="LogStub.cs" t="Include" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Properties" t="Include">
+        <e p="AssemblyInfo.cs" t="Include" />
+      </e>
+    </e>
+    <e p="D:\Projects\scada\ScadaData\ScadaData" t="IncludeRecursive">
+      <e p="bin" t="ExcludeRecursive" />
+      <e p="Cache.cs" t="Include" />
+      <e p="Client" t="Include">
+        <e p="BaseView.cs" t="Include" />
+        <e p="CommSettings.cs" t="Include" />
+        <e p="DataAccess.cs" t="Include" />
+        <e p="DataCache.cs" t="Include" />
+        <e p="DataFormatter.cs" t="Include" />
+        <e p="ISupportLoading.cs" t="Include" />
+        <e p="ServerComm.cs" t="Include" />
+        <e p="ViewCache.cs" t="Include" />
+      </e>
+      <e p="CommonPhrases.cs" t="Include" />
+      <e p="Data" t="Include">
+        <e p="Configuration" t="Include">
+          <e p="BaseTables.cs" t="Include" />
+          <e p="BaseValues.cs" t="Include" />
+          <e p="ConfDAO.cs" t="Include" />
+        </e>
+        <e p="Models" t="Include">
+          <e p="CnlStatProps.cs" t="Include" />
+          <e p="Command.cs" t="Include" />
+          <e p="CommLine.cs" t="Include" />
+          <e p="CtrlCnlProps.cs" t="Include" />
+          <e p="Device.cs" t="Include" />
+          <e p="DispEvent.cs" t="Include" />
+          <e p="EntityRights.cs" t="Include" />
+          <e p="InCnlProps.cs" t="Include" />
+          <e p="Obj.cs" t="Include" />
+          <e p="UiObjProps.cs" t="Include" />
+          <e p="UserProps.cs" t="Include" />
+        </e>
+        <e p="Tables" t="Include">
+          <e p="Adapter.cs" t="Include" />
+          <e p="BaseAdapter.cs" t="Include" />
+          <e p="EventAdapter.cs" t="Include" />
+          <e p="EventTableLight.cs" t="Include" />
+          <e p="SrezAdapter.cs" t="Include" />
+          <e p="SrezTable.cs" t="Include" />
+          <e p="SrezTableLight.cs" t="Include" />
+          <e p="Trend.cs" t="Include" />
+        </e>
+      </e>
+      <e p="FileListener.cs" t="Include" />
+      <e p="ISettings.cs" t="Include" />
+      <e p="ITreeNode.cs" t="Include" />
+      <e p="lang" t="Include">
+        <e p="ScadaData.en-GB.xml" t="Include" />
+        <e p="ScadaData.ru-RU.xml" t="Include" />
+      </e>
+      <e p="Localization.cs" t="Include" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Properties" t="Include">
+        <e p="AssemblyInfo.cs" t="Include" />
+      </e>
+      <e p="ScadaData.csproj" t="IncludeRecursive" />
+      <e p="ScadaException.cs" t="Include" />
+      <e p="ScadaUtils.Crypto.cs" t="Include" />
+      <e p="ScadaUtils.cs" t="Include" />
+      <e p="ScadaUtils.Xml.cs" t="Include" />
+      <e p="SerializationBinder.cs" t="Include" />
+      <e p="UI" t="Include">
+        <e p="ObjectChangedEventArgs.cs" t="Include" />
+        <e p="ObjectChangedEventHandler.cs" t="Include" />
+        <e p="ScadaUiUtils.cs" t="Include" />
+        <e p="Translator.cs" t="Include" />
+        <e p="TreeViewUtils.cs" t="Include" />
+      </e>
+    </e>
+    <e p="D:\Projects\scada\ScadaServices\ScadaUserService\ScadaUserService" t="IncludeRecursive">
+      <e p="bin" t="ExcludeRecursive" />
+      <e p="IUserService.cs" t="Include" />
+      <e p="MappingUser.cs" t="Include" />
+      <e p="obj" t="ExcludeRecursive">
+        <e p="Debug" t="Include">
+          <e p="net5" t="Include">
+            <e p="ScadaUserService.AssemblyInfo.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="ScadaUserService.csproj" t="IncludeRecursive" />
+      <e p="UserService.cs" t="Include" />
+      <e p="UserServiceConfiguration.cs" t="Include" />
+    </e>
+    <e p="D:\Projects\scada\ScadaServices\ScadaUserService\ScadaUserService.Contracts" t="IncludeRecursive">
+      <e p="bin" t="ExcludeRecursive" />
+      <e p="obj" t="ExcludeRecursive">
+        <e p="Debug" t="Include">
+          <e p="net5" t="Include">
+            <e p="ScadaUserService.Contracts.AssemblyInfo.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="ScadaUserService.Contracts.csproj" t="IncludeRecursive" />
+      <e p="UserAuthenticateInContract.cs" t="Include" />
+      <e p="UserAuthenticateOutContract.cs" t="Include" />
+      <e p="UserRegistrationInContract.cs" t="Include" />
+      <e p="UserUpdateInContract.cs" t="Include" />
+    </e>
+    <e p="D:\Projects\scada\ScadaServices\ScadaUserService\ScadaUserService.Repository" t="IncludeRecursive">
+      <e p="bin" t="ExcludeRecursive" />
+      <e p="IUserRepository.cs" t="Include" />
+      <e p="obj" t="ExcludeRecursive">
+        <e p="Debug" t="Include">
+          <e p="net5" t="Include">
+            <e p="ScadaUserService.Repository.AssemblyInfo.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="ScadaUserService.Repository.csproj" t="IncludeRecursive" />
+      <e p="UserRepository.cs" t="Include" />
+    </e>
+    <e p="D:\Projects\scada\ScadaWeb" t="IncludeFlat">
+      <e p="packages" t="ExcludeRecursive">
+        <e p="JavaScriptEngineSwitcher.V8.Native.win-x64.3.0.5\runtimes\win-x64\native\ClearScriptV8-64.dll" t="Include" />
+        <e p="JavaScriptEngineSwitcher.V8.Native.win-x64.3.0.5\runtimes\win-x64\native\v8-base-x64.dll" t="Include" />
+        <e p="JavaScriptEngineSwitcher.V8.Native.win-x64.3.0.5\runtimes\win-x64\native\v8-x64.dll" t="Include" />
+        <e p="JavaScriptEngineSwitcher.V8.Native.win-x86.3.0.5\runtimes\win-x86\native\ClearScriptV8-32.dll" t="Include" />
+        <e p="JavaScriptEngineSwitcher.V8.Native.win-x86.3.0.5\runtimes\win-x86\native\v8-base-ia32.dll" t="Include" />
+        <e p="JavaScriptEngineSwitcher.V8.Native.win-x86.3.0.5\runtimes\win-x86\native\v8-ia32.dll" t="Include" />
+      </e>
+      <e p="ScadaWeb5.sln" t="IncludeFlat" />
+      <e p="ScadaWebApi" t="IncludeRecursive">
+        <e p="appsettings.Development.json" t="Include" />
+        <e p="appsettings.json" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Controllers" t="Include">
+          <e p="Users.cs" t="Include" />
+          <e p="WeatherForecastController.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="net5.0" t="Include">
+              <e p="ScadaWebApi.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Program.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="launchSettings.json" t="Include" />
+        </e>
+        <e p="ScadaWebApi.csproj" t="IncludeRecursive" />
+        <e p="Startup.cs" t="Include" />
+        <e p="WeatherForecast.cs" t="Include" />
+      </e>
+      <e p="ScadaWebCommon5" t="IncludeRecursive">
+        <e p="AppData.cs" t="Include" />
+        <e p="AppDirs.cs" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="ClientApiSvc.cs" t="Include" />
+        <e p="DataTransferObject.cs" t="Include" />
+        <e p="DictUpdater.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="Plugins" t="Include">
+          <e p="ContentSpec.cs" t="Include" />
+          <e p="DataWndSpec.cs" t="Include" />
+          <e p="PluginSpec.cs" t="Include" />
+          <e p="ReportSpec.cs" t="Include" />
+          <e p="UiObjSpec.cs" t="Include" />
+          <e p="ViewSpec.cs" t="Include" />
+        </e>
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+        </e>
+        <e p="RepUtils.cs" t="Include" />
+        <e p="ScadaWebCommon5.csproj" t="IncludeRecursive" />
+        <e p="SettingsUpdater.cs" t="Include" />
+        <e p="Shell" t="Include">
+          <e p="ContentItem.cs" t="Include" />
+          <e p="DataWndItem.cs" t="Include" />
+          <e p="IWebTreeNode.cs" t="Include" />
+          <e p="MenuItem.cs" t="Include" />
+          <e p="RememberMe.cs" t="Include" />
+          <e p="ReportItem.cs" t="Include" />
+          <e p="ScriptPaths.cs" t="Include" />
+          <e p="SortOrders.cs" t="Include" />
+          <e p="StandardMenuItems.cs" t="Include" />
+          <e p="Stats.cs" t="Include" />
+          <e p="TreeViewRenderer.cs" t="Include" />
+          <e p="UrlTemplates.cs" t="Include" />
+          <e p="UserContent.cs" t="Include" />
+          <e p="UserMenu.cs" t="Include" />
+          <e p="UserViews.cs" t="Include" />
+          <e p="ViewNode.cs" t="Include" />
+        </e>
+        <e p="Storage.cs" t="Include" />
+        <e p="UserData.cs" t="Include" />
+        <e p="UserMonitor.cs" t="Include" />
+        <e p="UserRights.cs" t="Include" />
+        <e p="UserShot.cs" t="Include" />
+        <e p="ViewSettings.cs" t="Include" />
+        <e p="WebPhrases.cs" t="Include" />
+        <e p="WebSettings.cs" t="Include" />
+        <e p="WebUtils.cs" t="Include" />
+        <e p="WebUtils.Forms.cs" t="Include" />
+        <e p="WebUtils.QueryString.cs" t="Include" />
+      </e>
+      <e p="ScadaWebShell5" t="IncludeRecursive">
+        <e p="About.aspx" t="Include" />
+        <e p="About.aspx.cs" t="Include" />
+        <e p="About.aspx.designer.cs" t="Include" />
+        <e p="App_Start" t="Include">
+          <e p="ReactConfig.cs" t="Include" />
+        </e>
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="ClientApiSvc.svc" t="Include" />
+        <e p="compilerconfig.json" t="Include" />
+        <e p="compilerconfig.json.defaults" t="Include" />
+        <e p="config" t="Include">
+          <e p="ViewSettings.xml" t="Include" />
+          <e p="WebSettings.xml" t="Include" />
+        </e>
+        <e p="css" t="Include">
+          <e p="about.css" t="Include" />
+          <e p="about.less" t="Include" />
+          <e p="about.min.css" t="Include" />
+          <e p="common" t="Include">
+            <e p="contentform.css" t="Include" />
+            <e p="contentform.less" t="Include" />
+            <e p="contentform.min.css" t="Include" />
+            <e p="globalvar.less" t="Include" />
+            <e p="modalform.css" t="Include" />
+            <e p="modalform.less" t="Include" />
+            <e p="modalform.min.css" t="Include" />
+            <e p="plainform.less" t="Include" />
+          </e>
+          <e p="controls" t="Include">
+            <e p="notifier.css" t="Include" />
+            <e p="notifier.less" t="Include" />
+            <e p="notifier.min.css" t="Include" />
+            <e p="popup.css" t="Include" />
+            <e p="popup.less" t="Include" />
+            <e p="popup.min.css" t="Include" />
+            <e p="splitter.css" t="Include" />
+            <e p="splitter.less" t="Include" />
+            <e p="splitter.min.css" t="Include" />
+            <e p="tableheader.css" t="Include" />
+            <e p="tableheader.less" t="Include" />
+            <e p="tableheader.min.css" t="Include" />
+            <e p="treeview.css" t="Include" />
+            <e p="treeview.less" t="Include" />
+            <e p="treeview.min.css" t="Include" />
+          </e>
+          <e p="dialogs" t="Include">
+            <e p="calendar.css" t="Include" />
+            <e p="calendar.less" t="Include" />
+            <e p="calendar.min.css" t="Include" />
+            <e p="confirm.css" t="Include" />
+            <e p="confirm.less" t="Include" />
+            <e p="confirm.min.css" t="Include" />
+          </e>
+          <e p="error.css" t="Include" />
+          <e p="error.less" t="Include" />
+          <e p="error.min.css" t="Include" />
+          <e p="login.css" t="Include" />
+          <e p="login.less" t="Include" />
+          <e p="login.min.css" t="Include" />
+          <e p="mastermain.css" t="Include" />
+          <e p="mastermain.less" t="Include" />
+          <e p="mastermain.min.css" t="Include" />
+          <e p="noview.css" t="Include" />
+          <e p="noview.less" t="Include" />
+          <e p="noview.min.css" t="Include" />
+          <e p="reports.css" t="Include" />
+          <e p="reports.less" t="Include" />
+          <e p="reports.min.css" t="Include" />
+          <e p="user.css" t="Include" />
+          <e p="user.less" t="Include" />
+          <e p="user.min.css" t="Include" />
+          <e p="view.css" t="Include" />
+          <e p="view.less" t="Include" />
+          <e p="view.min.css" t="Include" />
+        </e>
+        <e p="dialogs" t="Include">
+          <e p="Calendar.aspx" t="Include" />
+          <e p="Calendar.aspx.cs" t="Include" />
+          <e p="Calendar.aspx.designer.cs" t="Include" />
+          <e p="Confirm.aspx" t="Include" />
+          <e p="Confirm.aspx.cs" t="Include" />
+          <e p="Confirm.aspx.designer.cs" t="Include" />
+        </e>
+        <e p="Error.aspx" t="Include" />
+        <e p="Error.aspx.cs" t="Include" />
+        <e p="Error.aspx.designer.cs" t="Include" />
+        <e p="Global.asax" t="Include" />
+        <e p="Global.asax.cs" t="Include" />
+        <e p="images" t="Include">
+          <e p="favicon.ico" t="Include" />
+          <e p="gear.png" t="Include" />
+          <e p="treeview" t="Include">
+            <e p="document.png" t="Include" />
+            <e p="folder.png" t="Include" />
+          </e>
+        </e>
+        <e p="index.htm" t="Include" />
+        <e p="js" t="Include">
+          <e p="api" t="Include">
+            <e p="ajaxqueue.js" t="Include" />
+            <e p="checkbrowser.js" t="Include" />
+            <e p="clientapi.js" t="Include" />
+            <e p="eventtypes.js" t="Include" />
+            <e p="export.js" t="Include" />
+            <e p="utils.js" t="Include" />
+            <e p="viewhub.js" t="Include" />
+          </e>
+          <e p="controls" t="Include">
+            <e p="notifier.js" t="Include" />
+            <e p="popup.js" t="Include" />
+            <e p="splitter.js" t="Include" />
+            <e p="tableheader.js" t="Include" />
+            <e p="treeview.js" t="Include" />
+          </e>
+          <e p="dialogs" t="Include">
+            <e p="calendar.js" t="Include" />
+            <e p="confirm.js" t="Include" />
+            <e p="dialogs.js" t="Include" />
+          </e>
+          <e p="error.js" t="Include" />
+          <e p="login.js" t="Include" />
+          <e p="mastermain.js" t="Include" />
+          <e p="view.js" t="Include" />
+        </e>
+        <e p="lang" t="Include">
+          <e p="ScadaWeb.en-GB.xml" t="Include" />
+          <e p="ScadaWeb.ru-RU.xml" t="Include" />
+        </e>
+        <e p="lib" t="Include">
+          <e p="bootstrap" t="Include">
+            <e p="css" t="Include">
+              <e p="bootstrap-theme.css" t="Include" />
+              <e p="bootstrap-theme.css.map" t="Include" />
+              <e p="bootstrap-theme.min.css" t="Include" />
+              <e p="bootstrap-theme.min.css.map" t="Include" />
+              <e p="bootstrap.css" t="Include" />
+              <e p="bootstrap.css.map" t="Include" />
+              <e p="bootstrap.min.css" t="Include" />
+              <e p="bootstrap.min.css.map" t="Include" />
+            </e>
+            <e p="fonts" t="Include">
+              <e p="glyphicons-halflings-regular.eot" t="Include" />
+              <e p="glyphicons-halflings-regular.svg" t="Include" />
+              <e p="glyphicons-halflings-regular.ttf" t="Include" />
+              <e p="glyphicons-halflings-regular.woff" t="Include" />
+              <e p="glyphicons-halflings-regular.woff2" t="Include" />
+            </e>
+            <e p="js" t="Include">
+              <e p="bootstrap.js" t="Include" />
+              <e p="bootstrap.min.js" t="Include" />
+              <e p="npm.js" t="Include" />
+            </e>
+          </e>
+          <e p="font-awesome" t="Include">
+            <e p="css" t="Include">
+              <e p="font-awesome.css" t="Include" />
+              <e p="font-awesome.min.css" t="Include" />
+            </e>
+            <e p="fonts" t="Include">
+              <e p="fontawesome-webfont.eot" t="Include" />
+              <e p="fontawesome-webfont.svg" t="Include" />
+              <e p="fontawesome-webfont.ttf" t="Include" />
+              <e p="fontawesome-webfont.woff" t="Include" />
+              <e p="fontawesome-webfont.woff2" t="Include" />
+              <e p="FontAwesome.otf" t="Include" />
+            </e>
+          </e>
+          <e p="jquery" t="Include">
+            <e p="jquery.js" t="Include" />
+            <e p="jquery.min.js" t="Include" />
+            <e p="jquery.min.map" t="Include" />
+          </e>
+          <e p="open-sans" t="Include">
+            <e p="css" t="Include">
+              <e p="open-sans.css" t="Include" />
+            </e>
+            <e p="fonts" t="Include">
+              <e p="open-sans-v13-latin-ext_cyrillic_latin_cyrillic-ext_greek-ext_vietnamese_greek-300.eot" t="Include" />
+              <e p="open-sans-v13-latin-ext_cyrillic_latin_cyrillic-ext_greek-ext_vietnamese_greek-300.svg" t="Include" />
+              <e p="open-sans-v13-latin-ext_cyrillic_latin_cyrillic-ext_greek-ext_vietnamese_greek-300.ttf" t="Include" />
+              <e p="open-sans-v13-latin-ext_cyrillic_latin_cyrillic-ext_greek-ext_vietnamese_greek-300.woff" t="Include" />
+              <e p="open-sans-v13-latin-ext_cyrillic_latin_cyrillic-ext_greek-ext_vietnamese_greek-300.woff2" t="Include" />
+              <e p="open-sans-v13-latin-ext_cyrillic_latin_cyrillic-ext_greek-ext_vietnamese_greek-300italic.eot" t="Include" />
+              <e p="open-sans-v13-latin-ext_cyrillic_latin_cyrillic-ext_greek-ext_vietnamese_greek-300italic.svg" t="Include" />
+              <e p="open-sans-v13-latin-ext_cyrillic_latin_cyrillic-ext_greek-ext_vietnamese_greek-300italic.ttf" t="Include" />
+              <e p="open-sans-v13-latin-ext_cyrillic_latin_cyrillic-ext_greek-ext_vietnamese_greek-300italic.woff" t="Include" />
+              <e p="open-sans-v13-latin-ext_cyrillic_latin_cyrillic-ext_greek-ext_vietnamese_greek-300italic.woff2" t="Include" />
+              <e p="open-sans-v13-latin-ext_cyrillic_latin_cyrillic-ext_greek-ext_vietnamese_greek-600.eot" t="Include" />
+              <e p="open-sans-v13-latin-ext_cyrillic_latin_cyrillic-ext_greek-ext_vietnamese_greek-600.svg" t="Include" />
+              <e p="open-sans-v13-latin-ext_cyrillic_latin_cyrillic-ext_greek-ext_vietnamese_greek-600.ttf" t="Include" />
+              <e p="open-sans-v13-latin-ext_cyrillic_latin_cyrillic-ext_greek-ext_vietnamese_greek-600.woff" t="Include" />
+              <e p="open-sans-v13-latin-ext_cyrillic_latin_cyrillic-ext_greek-ext_vietnamese_greek-600.woff2" t="Include" />
+              <e p="open-sans-v13-latin-ext_cyrillic_latin_cyrillic-ext_greek-ext_vietnamese_greek-600italic.eot" t="Include" />
+              <e p="open-sans-v13-latin-ext_cyrillic_latin_cyrillic-ext_greek-ext_vietnamese_greek-600italic.svg" t="Include" />
+              <e p="open-sans-v13-latin-ext_cyrillic_latin_cyrillic-ext_greek-ext_vietnamese_greek-600italic.ttf" t="Include" />
+              <e p="open-sans-v13-latin-ext_cyrillic_latin_cyrillic-ext_greek-ext_vietnamese_greek-600italic.woff" t="Include" />
+              <e p="open-sans-v13-latin-ext_cyrillic_latin_cyrillic-ext_greek-ext_vietnamese_greek-600italic.woff2" t="Include" />
+              <e p="open-sans-v13-latin-ext_cyrillic_latin_cyrillic-ext_greek-ext_vietnamese_greek-700.eot" t="Include" />
+              <e p="open-sans-v13-latin-ext_cyrillic_latin_cyrillic-ext_greek-ext_vietnamese_greek-700.svg" t="Include" />
+              <e p="open-sans-v13-latin-ext_cyrillic_latin_cyrillic-ext_greek-ext_vietnamese_greek-700.ttf" t="Include" />
+              <e p="open-sans-v13-latin-ext_cyrillic_latin_cyrillic-ext_greek-ext_vietnamese_greek-700.woff" t="Include" />
+              <e p="open-sans-v13-latin-ext_cyrillic_latin_cyrillic-ext_greek-ext_vietnamese_greek-700.woff2" t="Include" />
+              <e p="open-sans-v13-latin-ext_cyrillic_latin_cyrillic-ext_greek-ext_vietnamese_greek-700italic.eot" t="Include" />
+              <e p="open-sans-v13-latin-ext_cyrillic_latin_cyrillic-ext_greek-ext_vietnamese_greek-700italic.svg" t="Include" />
+              <e p="open-sans-v13-latin-ext_cyrillic_latin_cyrillic-ext_greek-ext_vietnamese_greek-700italic.ttf" t="Include" />
+              <e p="open-sans-v13-latin-ext_cyrillic_latin_cyrillic-ext_greek-ext_vietnamese_greek-700italic.woff" t="Include" />
+              <e p="open-sans-v13-latin-ext_cyrillic_latin_cyrillic-ext_greek-ext_vietnamese_greek-700italic.woff2" t="Include" />
+              <e p="open-sans-v13-latin-ext_cyrillic_latin_cyrillic-ext_greek-ext_vietnamese_greek-800.eot" t="Include" />
+              <e p="open-sans-v13-latin-ext_cyrillic_latin_cyrillic-ext_greek-ext_vietnamese_greek-800.svg" t="Include" />
+              <e p="open-sans-v13-latin-ext_cyrillic_latin_cyrillic-ext_greek-ext_vietnamese_greek-800.ttf" t="Include" />
+              <e p="open-sans-v13-latin-ext_cyrillic_latin_cyrillic-ext_greek-ext_vietnamese_greek-800.woff" t="Include" />
+              <e p="open-sans-v13-latin-ext_cyrillic_latin_cyrillic-ext_greek-ext_vietnamese_greek-800.woff2" t="Include" />
+              <e p="open-sans-v13-latin-ext_cyrillic_latin_cyrillic-ext_greek-ext_vietnamese_greek-800italic.eot" t="Include" />
+              <e p="open-sans-v13-latin-ext_cyrillic_latin_cyrillic-ext_greek-ext_vietnamese_greek-800italic.svg" t="Include" />
+              <e p="open-sans-v13-latin-ext_cyrillic_latin_cyrillic-ext_greek-ext_vietnamese_greek-800italic.ttf" t="Include" />
+              <e p="open-sans-v13-latin-ext_cyrillic_latin_cyrillic-ext_greek-ext_vietnamese_greek-800italic.woff" t="Include" />
+              <e p="open-sans-v13-latin-ext_cyrillic_latin_cyrillic-ext_greek-ext_vietnamese_greek-800italic.woff2" t="Include" />
+              <e p="open-sans-v13-latin-ext_cyrillic_latin_cyrillic-ext_greek-ext_vietnamese_greek-italic.eot" t="Include" />
+              <e p="open-sans-v13-latin-ext_cyrillic_latin_cyrillic-ext_greek-ext_vietnamese_greek-italic.svg" t="Include" />
+              <e p="open-sans-v13-latin-ext_cyrillic_latin_cyrillic-ext_greek-ext_vietnamese_greek-italic.ttf" t="Include" />
+              <e p="open-sans-v13-latin-ext_cyrillic_latin_cyrillic-ext_greek-ext_vietnamese_greek-italic.woff" t="Include" />
+              <e p="open-sans-v13-latin-ext_cyrillic_latin_cyrillic-ext_greek-ext_vietnamese_greek-italic.woff2" t="Include" />
+              <e p="open-sans-v13-latin-ext_cyrillic_latin_cyrillic-ext_greek-ext_vietnamese_greek-regular.eot" t="Include" />
+              <e p="open-sans-v13-latin-ext_cyrillic_latin_cyrillic-ext_greek-ext_vietnamese_greek-regular.svg" t="Include" />
+              <e p="open-sans-v13-latin-ext_cyrillic_latin_cyrillic-ext_greek-ext_vietnamese_greek-regular.ttf" t="Include" />
+              <e p="open-sans-v13-latin-ext_cyrillic_latin_cyrillic-ext_greek-ext_vietnamese_greek-regular.woff" t="Include" />
+              <e p="open-sans-v13-latin-ext_cyrillic_latin_cyrillic-ext_greek-ext_vietnamese_greek-regular.woff2" t="Include" />
+            </e>
+          </e>
+          <e p="pdfmake" t="Include">
+            <e p="pdfmake.min.js" t="Include" />
+            <e p="vfs_fonts.js" t="Include" />
+          </e>
+        </e>
+        <e p="Log" t="Include" />
+        <e p="Login.aspx" t="Include" />
+        <e p="Login.aspx.cs" t="Include" />
+        <e p="Login.aspx.designer.cs" t="Include" />
+        <e p="MasterMain.Master" t="Include" />
+        <e p="MasterMain.Master.cs" t="Include" />
+        <e p="MasterMain.Master.designer.cs" t="Include" />
+        <e p="NoView.aspx" t="Include" />
+        <e p="NoView.aspx.cs" t="Include" />
+        <e p="NoView.aspx.designer.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="packages.config" t="Include" />
+        <e p="Plugins" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+          <e p="PublishProfiles" t="Include">
+            <e p="MainProfile.pubxml" t="Include" />
+          </e>
+        </e>
+        <e p="Reports.aspx" t="Include" />
+        <e p="Reports.aspx.cs" t="Include" />
+        <e p="Reports.aspx.designer.cs" t="Include" />
+        <e p="ScadaWebShell5.csproj" t="IncludeRecursive" />
+        <e p="storage" t="Include" />
+        <e p="User.aspx" t="Include" />
+        <e p="User.aspx.cs" t="Include" />
+        <e p="User.aspx.designer.cs" t="Include" />
+        <e p="View.aspx" t="Include" />
+        <e p="View.aspx.cs" t="Include" />
+        <e p="View.aspx.designer.cs" t="Include" />
+        <e p="ViewPopup.aspx" t="Include" />
+        <e p="ViewPopup.aspx.cs" t="Include" />
+        <e p="ViewPopup.aspx.designer.cs" t="Include" />
+        <e p="Web.config" t="Include" />
+        <e p="Web.Debug.config" t="Include" />
+        <e p="Web.Release.config" t="Include" />
+        <e p="x64" t="Include" />
+        <e p="x86" t="Include" />
+      </e>
+      <e p="Services" t="Include" />
+    </e>
+  </component>
+</project>
