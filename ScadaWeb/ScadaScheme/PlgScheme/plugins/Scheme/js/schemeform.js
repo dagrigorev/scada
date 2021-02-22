@@ -1,228 +1,228 @@
-﻿// Rapid SCADA namespace
-var scada = scada || {};
+// Rapid SCADA namespace
+var scada = scada || {}
 // Scheme namespace
-scada.scheme = scada.scheme || {};
+scada.scheme = scada.scheme || {}
 
 // Scheme object
-var scheme = null;
+let scheme = null
 // Notifier control
-var notifier = null;
+let notifier = null
 // Possible scale values
-var scaleVals = [0.1, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 2, 2.5, 3, 4, 5];
+const scaleVals = [0.1, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 2, 2.5, 3, 4, 5]
 
 // The variables below must be defined in Scheme.aspx
 // View ID
-var viewID = viewID || 0;
+var viewID = viewID || 0
 // Scheme refresh rate
-var refrRate = refrRate || 1000;
+var refrRate = refrRate || 1000
 // Localized phrases
-var phrases = phrases || {};
+var phrases = phrases || {}
 // View control right
-var controlRight = controlRight || false;
+var controlRight = controlRight || false
 
 // Scheme environment object accessible by the scheme and its components
 scada.scheme.env = {
-    // Localized phrases
-    phrases: phrases,
-    // The view hub object
-    viewHub: scada.viewHubLocator ? scada.viewHubLocator.getViewHub() : null,
+  // Localized phrases
+  phrases: phrases,
+  // The view hub object
+  viewHub: scada.viewHubLocator ? scada.viewHubLocator.getViewHub() : null,
 
-    // Send telecommand
-    sendCommand: function (ctrlCnlNum, cmdVal, viewID, componentID) {
-        scheme.sendCommand(ctrlCnlNum, cmdVal, viewID, componentID, function (success) {
-            if (!success) {
-                notifier.addNotification(phrases.UnableSendCommand, scada.NotifTypes.ERROR, notifier.DEF_NOTIF_LIFETIME);
-            }
-        });
-    }
-};
+  // Send telecommand
+  sendCommand: function (ctrlCnlNum, cmdVal, viewID, componentID) {
+    scheme.sendCommand(ctrlCnlNum, cmdVal, viewID, componentID, function (success) {
+      if (!success) {
+        notifier.addNotification(phrases.UnableSendCommand, scada.NotifTypes.ERROR, notifier.DEF_NOTIF_LIFETIME)
+      }
+    })
+  }
+}
 
 // Load the scheme
-function loadScheme(viewID) {
-    scheme.load(viewID, function (success) {
-        if (success) {
-            if (!DEBUG_MODE) {
-                // show errors
-                if (Array.isArray(scheme.loadErrors) && scheme.loadErrors.length > 0) {
-                    notifier.addNotification(scheme.loadErrors.join("<br/>"),
-                        scada.NotifTypes.ERROR, notifier.INFINITE_NOTIF_LIFETIME);
-                }
-
-                // show scheme
-                scheme.createDom(controlRight);
-                loadScale();
-                displayScale();
-                startUpdatingScheme();
-            }
-        } else {
-            notifier.addNotification(phrases.LoadSchemeError +
-                " <input type='button' value='" + phrases.ReloadButton + "' onclick='reloadScheme()' />",
-                scada.NotifTypes.ERROR, notifier.INFINITE_NOTIF_LIFETIME);
+function loadScheme (viewID) {
+  scheme.load(viewID, function (success) {
+    if (success) {
+      if (!DEBUG_MODE) {
+        // show errors
+        if (Array.isArray(scheme.loadErrors) && scheme.loadErrors.length > 0) {
+          notifier.addNotification(scheme.loadErrors.join('<br/>'),
+            scada.NotifTypes.ERROR, notifier.INFINITE_NOTIF_LIFETIME)
         }
-    });
+
+        // show scheme
+        scheme.createDom(controlRight)
+        loadScale()
+        displayScale()
+        startUpdatingScheme()
+      }
+    } else {
+      notifier.addNotification(phrases.LoadSchemeError +
+                " <input type='button' value='" + phrases.ReloadButton + "' onclick='reloadScheme()' />",
+      scada.NotifTypes.ERROR, notifier.INFINITE_NOTIF_LIFETIME)
+    }
+  })
 }
 
 // Reload the scheme
-function reloadScheme() {
-    location.reload(true);
+function reloadScheme () {
+  location.reload(true)
 }
 
 // Start cyclic scheme updating process
-function startUpdatingScheme() {
-    scheme.updateData(scada.clientAPI, function (success) {
-        if (!success) {
-            notifier.addNotification(phrases.UpdateError, scada.NotifTypes.ERROR, notifier.DEF_NOTIF_LIFETIME);
-        }
+function startUpdatingScheme () {
+  scheme.updateData(scada.clientAPI, function (success) {
+    if (!success) {
+      notifier.addNotification(phrases.UpdateError, scada.NotifTypes.ERROR, notifier.DEF_NOTIF_LIFETIME)
+    }
 
-        setTimeout(startUpdatingScheme, refrRate);
-    });
+    setTimeout(startUpdatingScheme, refrRate)
+  })
 }
 
 // Bind handlers of the toolbar buttons
-function initToolbar() {
-    var Scales = scada.scheme.Scales;
+function initToolbar () {
+  const Scales = scada.scheme.Scales
 
-    $("#lblFitScreenBtn").click(function () {
-        scheme.setScale(Scales.FIT_SCREEN);
-        displayScale();
-        saveScale(Scales.FIT_SCREEN);
-    });
+  $('#lblFitScreenBtn').click(function () {
+    scheme.setScale(Scales.FIT_SCREEN)
+    displayScale()
+    saveScale(Scales.FIT_SCREEN)
+  })
 
-    $("#lblFitWidthBtn").click(function () {
-        scheme.setScale(Scales.FIT_WIDTH);
-        displayScale();
-        saveScale(Scales.FIT_WIDTH);
-    });
+  $('#lblFitWidthBtn').click(function () {
+    scheme.setScale(Scales.FIT_WIDTH)
+    displayScale()
+    saveScale(Scales.FIT_WIDTH)
+  })
 
-    $("#lblZoomInBtn").click(function (event) {
-        scheme.setScale(getNextScale());
-        displayScale();
-        saveScale();
-    });
+  $('#lblZoomInBtn').click(function (event) {
+    scheme.setScale(getNextScale())
+    displayScale()
+    saveScale()
+  })
 
-    $("#lblZoomOutBtn").click(function (event) {
-        scheme.setScale(getPrevScale());
-        displayScale();
-        saveScale();
-    });
+  $('#lblZoomOutBtn').click(function (event) {
+    scheme.setScale(getPrevScale())
+    displayScale()
+    saveScale()
+  })
 }
 
 // Get the previous scale value from the possible values array
-function getPrevScale() {
-    var curScale = scheme.scale;
-    for (var i = scaleVals.length - 1; i >= 0; i--) {
-        var prevScale = scaleVals[i];
-        if (curScale > prevScale) {
-            return prevScale;
-        }
+function getPrevScale () {
+  const curScale = scheme.scale
+  for (let i = scaleVals.length - 1; i >= 0; i--) {
+    const prevScale = scaleVals[i]
+    if (curScale > prevScale) {
+      return prevScale
     }
-    return curScale;
+  }
+  return curScale
 }
 
 // Get the next scale value from the possible values array
-function getNextScale() {
-    var curScale = scheme.scale;
-    for (var i = 0, len = scaleVals.length; i < len; i++) {
-        var nextScale = scaleVals[i];
-        if (curScale < nextScale) {
-            return nextScale;
-        }
+function getNextScale () {
+  const curScale = scheme.scale
+  for (let i = 0, len = scaleVals.length; i < len; i++) {
+    const nextScale = scaleVals[i]
+    if (curScale < nextScale) {
+      return nextScale
     }
-    return curScale;
+  }
+  return curScale
 }
 
 // Display the scheme scale
-function displayScale() {
-    $("#spanCurScale").text(Math.round(scheme.scale * 100) + "%");
+function displayScale () {
+  $('#spanCurScale').text(Math.round(scheme.scale * 100) + '%')
 }
 
 // Load the scheme scale from the local storage
-function loadScale() {
-    var scale = localStorage.getItem("Scheme.SchemeScale");
-    if (scale) {
-        scheme.setScale(scale);
-    }
+function loadScale () {
+  const scale = localStorage.getItem('Scheme.SchemeScale')
+  if (scale) {
+    scheme.setScale(scale)
+  }
 }
 
 // Save the scheme scale in the local storage
-function saveScale(opt_scale) {
-    localStorage.setItem("Scheme.SchemeScale", opt_scale ? opt_scale : scheme.scale);
+function saveScale (opt_scale) {
+  localStorage.setItem('Scheme.SchemeScale', opt_scale || scheme.scale)
 }
 
 // Update the scheme scale if the scheme should fit size
-function updateScale() {
-    var scale = localStorage.getItem("Scheme.SchemeScale");
-    if (scale && !$.isNumeric(scale)) {
-        scheme.setScale(scale);
-        displayScale();
-    }
+function updateScale () {
+  const scale = localStorage.getItem('Scheme.SchemeScale')
+  if (scale && !$.isNumeric(scale)) {
+    scheme.setScale(scale)
+    displayScale()
+  }
 }
 
 // Update layout of the top level div elements
-function updateLayout() {
-    var divNotif = $("#divNotif");
-    var divSchWrapper = $("#divSchWrapper");
-    var divToolbar = $("#divToolbar");
-    var notifHeight = divNotif.css("display") == "block" ? divNotif.outerHeight() : 0;
-    var windowWidth = $(window).width();
+function updateLayout () {
+  const divNotif = $('#divNotif')
+  const divSchWrapper = $('#divSchWrapper')
+  const divToolbar = $('#divToolbar')
+  const notifHeight = divNotif.css('display') == 'block' ? divNotif.outerHeight() : 0
+  const windowWidth = $(window).width()
 
-    $("body").css("padding-top", notifHeight);
-    divNotif.outerWidth(windowWidth);
-    divSchWrapper
-        .outerWidth(windowWidth)
-        .outerHeight($(window).height() - notifHeight);
-    divToolbar.css("top", notifHeight);
+  $('body').css('padding-top', notifHeight)
+  divNotif.outerWidth(windowWidth)
+  divSchWrapper
+    .outerWidth(windowWidth)
+    .outerHeight($(window).height() - notifHeight)
+  divToolbar.css('top', notifHeight)
 }
 
 // Initialize debug tools
-function initDebugTools() {
-    $("#divDebugTools").css("display", "inline-block");
+function initDebugTools () {
+  $('#divDebugTools').css('display', 'inline-block')
 
-    $("#spanLoadSchemeBtn").click(function () {
-        loadScheme(viewID);
-    });
+  $('#spanLoadSchemeBtn').click(function () {
+    loadScheme(viewID)
+  })
 
-    $("#spanCreateDomBtn").click(function () {
-        scheme.createDom();
-    });
+  $('#spanCreateDomBtn').click(function () {
+    scheme.createDom()
+  })
 
-    $("#spanStartUpdBtn").click(function () {
-        startUpdatingScheme();
-        $(this).prop("disabled", true);
-    });
+  $('#spanStartUpdBtn').click(function () {
+    startUpdatingScheme()
+    $(this).prop('disabled', true)
+  })
 
-    $("#spanAddNotifBtn").click(function () {
-        notifier.addNotification(scada.utils.getCurTime() + " Test notification",
-            scada.NotifTypes.INFO, notifier.DEF_NOTIF_LIFETIME);
-    });
+  $('#spanAddNotifBtn').click(function () {
+    notifier.addNotification(scada.utils.getCurTime() + ' Test notification',
+      scada.NotifTypes.INFO, notifier.DEF_NOTIF_LIFETIME)
+  })
 }
 
 $(document).ready(function () {
-    // setup client API
-    scada.clientAPI.rootPath = "../../";
-    scada.clientAPI.ajaxQueue = scada.ajaxQueueLocator.getAjaxQueue();
+  // setup client API
+  scada.clientAPI.rootPath = '../../'
+  scada.clientAPI.ajaxQueue = scada.ajaxQueueLocator.getAjaxQueue()
 
-    // create scheme
-    var divSchWrapper = $("#divSchWrapper");
-    scheme = new scada.scheme.Scheme();
-    scheme.schemeEnv = scada.scheme.env;
-    scheme.parentDomElem = divSchWrapper;
+  // create scheme
+  const divSchWrapper = $('#divSchWrapper')
+  scheme = new scada.scheme.Scheme()
+  scheme.schemeEnv = scada.scheme.env
+  scheme.parentDomElem = divSchWrapper
 
-    // setup user interface
-    initToolbar();
-    scada.utils.styleIOS(divSchWrapper);
-    updateLayout();
-    notifier = new scada.Notifier("#divNotif");
-    notifier.startClearingNotifications();
+  // setup user interface
+  initToolbar()
+  scada.utils.styleIOS(divSchWrapper)
+  updateLayout()
+  notifier = new scada.Notifier('#divNotif')
+  notifier.startClearingNotifications()
 
-    $(window).on("resize " + scada.EventTypes.UPDATE_LAYOUT, function () {
-        updateLayout();
-        updateScale();
-    });
+  $(window).on('resize ' + scada.EventTypes.UPDATE_LAYOUT, function () {
+    updateLayout()
+    updateScale()
+  })
 
-    if (DEBUG_MODE) {
-        initDebugTools();
-    } else {
-        loadScheme(viewID);
-    }
-});
+  if (DEBUG_MODE) {
+    initDebugTools()
+  } else {
+    loadScheme(viewID)
+  }
+})

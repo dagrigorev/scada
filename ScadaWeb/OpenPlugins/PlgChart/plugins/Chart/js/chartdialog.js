@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Chart object that implements displaying charts
  *
  * Author   : Mikhail Shiryaev
@@ -10,19 +10,19 @@
  */
 
 // Rapid SCADA namespace
-var scada = scada || {};
+var scada = scada || {}
 // Chart namespace
-scada.chart = scada.chart || {};
+scada.chart = scada.chart || {}
 
 scada.chart.dialog = {
-    // Get chart URL
-    getChartUrl: function (cnlNums, viewIDs, date) {
-        return "plugins/Chart/Chart.aspx?cnlNum=" + cnlNums + "&viewID=" + viewIDs +
-            "&" + scada.utils.dateToQueryString(date);
-    },
+  // Get chart URL
+  getChartUrl: function (cnlNums, viewIDs, date) {
+    return 'plugins/Chart/Chart.aspx?cnlNum=' + cnlNums + '&viewID=' + viewIDs +
+            '&' + scada.utils.dateToQueryString(date)
+  },
 
-    // Open chart in the new tab
-    show: function (rootPath, cnlNums, viewIDs, date) {
-        window.open(rootPath + this.getChartUrl(cnlNums, viewIDs, date));
-    }
+  // Open chart in the new tab
+  show: function (rootPath, cnlNums, viewIDs, date) {
+    window.open(rootPath + this.getChartUrl(cnlNums, viewIDs, date))
+  }
 }
