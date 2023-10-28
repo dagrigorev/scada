@@ -23,7 +23,6 @@
  * Modified : 2017
  */
 
-using Svg;
 using System;
 using System.ComponentModel;
 using System.Drawing;
@@ -136,18 +135,6 @@ namespace Scada.Scheme.Model.PropertyGrid
             if (Image == null || Image.Data == null)
             {
                 source = null;
-            }
-            else if (Name != null && Name.EndsWith(".svg", StringComparison.OrdinalIgnoreCase))
-            {
-                using (MemoryStream memStream = new MemoryStream(Image.Data))
-                {
-                    SvgDocument svgDocument = SvgDocument.Open<SvgDocument>(memStream);
-                    source = svgDocument.Draw();
-                    DataSize = (int)memStream.Length;
-                }
-
-                ImageSize = new Size(source.Width, source.Height);
-                Format = "Svg";
             }
             else
             {
