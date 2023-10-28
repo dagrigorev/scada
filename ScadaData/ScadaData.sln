@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27428.2005
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScadaData", "ScadaData\ScadaData.csproj", "{C5DC293F-13CA-435F-A7DB-4BA91639C292}"
 EndProject
@@ -10,7 +10,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScadaData.Svc", "ScadaData.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScadaData.Dao", "ScadaData.Dao\ScadaData.Dao.csproj", "{1DDE26A2-1E24-4680-A635-2760B37CAFDB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScadaData.Std", "ScadaData.Std\ScadaData.Std.csproj", "{3C69A20A-6810-445E-AE86-E98AB91C42F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScadaData.Std", "ScadaData.Std\ScadaData.Std.csproj", "{3C69A20A-6810-445E-AE86-E98AB91C42F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Log", "..\Log\Log\Log.csproj", "{A05EA084-E509-4025-9241-6A5BE5C2B328}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Log.Std", "..\Log\Log.Std\Log.Std.csproj", "{D1EFDC86-BCCB-4DA2-891B-8D56C30DDF04}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,6 +42,14 @@ Global
 		{3C69A20A-6810-445E-AE86-E98AB91C42F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C69A20A-6810-445E-AE86-E98AB91C42F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C69A20A-6810-445E-AE86-E98AB91C42F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A05EA084-E509-4025-9241-6A5BE5C2B328}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A05EA084-E509-4025-9241-6A5BE5C2B328}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A05EA084-E509-4025-9241-6A5BE5C2B328}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A05EA084-E509-4025-9241-6A5BE5C2B328}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1EFDC86-BCCB-4DA2-891B-8D56C30DDF04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1EFDC86-BCCB-4DA2-891B-8D56C30DDF04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1EFDC86-BCCB-4DA2-891B-8D56C30DDF04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1EFDC86-BCCB-4DA2-891B-8D56C30DDF04}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
