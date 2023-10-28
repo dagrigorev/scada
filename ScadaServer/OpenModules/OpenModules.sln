@@ -1,11 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModTest", "ModTest\ModTest.csproj", "{1D0EF7CF-B70B-4544-A11B-EAE4F6DCFF7F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModDBExport", "ModDBExport\ModDBExport.csproj", "{CD5B2061-B57F-4FEB-9596-779DDCFAC2C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScadaData", "..\..\ScadaData\ScadaData\ScadaData.csproj", "{C5DC293F-13CA-435F-A7DB-4BA91639C292}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Log", "..\..\Log\Log\Log.csproj", "{A05EA084-E509-4025-9241-6A5BE5C2B328}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScadaServerCommon", "..\ScadaServerCommon\ScadaServerCommon.csproj", "{3CA67403-5B85-489A-B7B4-81D682B23146}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,8 +27,23 @@ Global
 		{CD5B2061-B57F-4FEB-9596-779DDCFAC2C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CD5B2061-B57F-4FEB-9596-779DDCFAC2C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CD5B2061-B57F-4FEB-9596-779DDCFAC2C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5DC293F-13CA-435F-A7DB-4BA91639C292}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5DC293F-13CA-435F-A7DB-4BA91639C292}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5DC293F-13CA-435F-A7DB-4BA91639C292}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5DC293F-13CA-435F-A7DB-4BA91639C292}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A05EA084-E509-4025-9241-6A5BE5C2B328}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A05EA084-E509-4025-9241-6A5BE5C2B328}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A05EA084-E509-4025-9241-6A5BE5C2B328}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A05EA084-E509-4025-9241-6A5BE5C2B328}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CA67403-5B85-489A-B7B4-81D682B23146}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CA67403-5B85-489A-B7B4-81D682B23146}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CA67403-5B85-489A-B7B4-81D682B23146}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CA67403-5B85-489A-B7B4-81D682B23146}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7FD2ACF8-87A3-49BF-827A-10F456A0C938}
 	EndGlobalSection
 EndGlobal
