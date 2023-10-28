@@ -833,7 +833,7 @@
         private System.Windows.Forms.ToolStripMenuItem miSettings;
         private System.Windows.Forms.ToolStripMenuItem miSettingsParams;
         private System.Windows.Forms.ToolStripMenuItem miService;
-        private WinControl.WinControl winControl;
+        private WinControl winControl;
         private System.Windows.Forms.ImageList ilTree;
         private System.Windows.Forms.ToolStripButton btnDisconnect;
         private System.Windows.Forms.ToolStripSeparator sepFirst;

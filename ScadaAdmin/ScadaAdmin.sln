@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.28315.86
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScadaAdmin", "ScadaAdmin\ScadaAdmin.csproj", "{28E34F89-F42C-40AC-9A42-D58A6B0CF50C}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScadaCommCommon", "..\ScadaComm\ScadaCommCommon\ScadaCommCommon.csproj", "{7BAEAE0E-4694-41D7-BC29-F205AEF69741}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScadaAdminCommon", "ScadaAdminCommon\ScadaAdminCommon.csproj", "{324EC5B3-33C3-42CA-9FD0-99817CDEA8F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScadaAgentNet", "..\ScadaAgent\ScadaAgentNet\ScadaAgentNet.csproj", "{C377283B-858B-4EFC-A560-E90FF2F26B03}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{324EC5B3-33C3-42CA-9FD0-99817CDEA8F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{324EC5B3-33C3-42CA-9FD0-99817CDEA8F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{324EC5B3-33C3-42CA-9FD0-99817CDEA8F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C377283B-858B-4EFC-A560-E90FF2F26B03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C377283B-858B-4EFC-A560-E90FF2F26B03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C377283B-858B-4EFC-A560-E90FF2F26B03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C377283B-858B-4EFC-A560-E90FF2F26B03}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

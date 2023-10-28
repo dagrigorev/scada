@@ -31,7 +31,6 @@ using System.Data.SqlServerCe;
 using System.Drawing;
 using System.Globalization;
 using System.Windows.Forms;
-using WinControl;
 
 namespace ScadaAdmin
 {

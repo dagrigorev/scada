@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScadaTableEditor", "ScadaTableEditor\ScadaTableEditor.csproj", "{41C04942-ADF1-42DF-82EF-AD7810721183}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScadaData", "..\ScadaData\ScadaData\ScadaData.csproj", "{C5DC293F-13CA-435F-A7DB-4BA91639C292}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlgTableCommon", "OpenPlugins\PlgTableCommon\PlgTableCommon.csproj", "{F0DD8F7E-F741-47B3-925C-10B05F0112A7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,8 +25,27 @@ Global
 		{41C04942-ADF1-42DF-82EF-AD7810721183}.Release|Any CPU.Build.0 = Release|Any CPU
 		{41C04942-ADF1-42DF-82EF-AD7810721183}.Release|x86.ActiveCfg = Release|x86
 		{41C04942-ADF1-42DF-82EF-AD7810721183}.Release|x86.Build.0 = Release|x86
+		{C5DC293F-13CA-435F-A7DB-4BA91639C292}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5DC293F-13CA-435F-A7DB-4BA91639C292}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5DC293F-13CA-435F-A7DB-4BA91639C292}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C5DC293F-13CA-435F-A7DB-4BA91639C292}.Debug|x86.Build.0 = Debug|Any CPU
+		{C5DC293F-13CA-435F-A7DB-4BA91639C292}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5DC293F-13CA-435F-A7DB-4BA91639C292}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5DC293F-13CA-435F-A7DB-4BA91639C292}.Release|x86.ActiveCfg = Release|Any CPU
+		{C5DC293F-13CA-435F-A7DB-4BA91639C292}.Release|x86.Build.0 = Release|Any CPU
+		{F0DD8F7E-F741-47B3-925C-10B05F0112A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0DD8F7E-F741-47B3-925C-10B05F0112A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0DD8F7E-F741-47B3-925C-10B05F0112A7}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F0DD8F7E-F741-47B3-925C-10B05F0112A7}.Debug|x86.Build.0 = Debug|Any CPU
+		{F0DD8F7E-F741-47B3-925C-10B05F0112A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0DD8F7E-F741-47B3-925C-10B05F0112A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0DD8F7E-F741-47B3-925C-10B05F0112A7}.Release|x86.ActiveCfg = Release|Any CPU
+		{F0DD8F7E-F741-47B3-925C-10B05F0112A7}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F3A60EB9-0A80-4D35-8C1E-A211E55FABD0}
 	EndGlobalSection
 EndGlobal

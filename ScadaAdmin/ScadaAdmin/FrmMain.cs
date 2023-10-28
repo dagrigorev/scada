@@ -31,7 +31,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.ServiceProcess;
 using System.Windows.Forms;
-using WinControl;
 
 namespace ScadaAdmin
 {
