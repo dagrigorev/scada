@@ -1,0 +1,93 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+
+# Core Domain Layer
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RapidScada.Domain", "src\Core\RapidScada.Domain\RapidScada.Domain.csproj", "{A1000000-0000-0000-0000-000000000001}"
+EndProject
+
+# Application Layer
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RapidScada.Application", "src\Core\RapidScada.Application\RapidScada.Application.csproj", "{A2000000-0000-0000-0000-000000000002}"
+EndProject
+
+# Infrastructure Layer
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RapidScada.Infrastructure", "src\Infrastructure\RapidScada.Infrastructure\RapidScada.Infrastructure.csproj", "{A3000000-0000-0000-0000-000000000003}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RapidScada.Persistence", "src\Infrastructure\RapidScada.Persistence\RapidScada.Persistence.csproj", "{A3100000-0000-0000-0000-000000000031}"
+EndProject
+
+# Communication Drivers
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RapidScada.Drivers.Modbus", "src\Drivers\RapidScada.Drivers.Modbus\RapidScada.Drivers.Modbus.csproj", "{A4000000-0000-0000-0000-000000000004}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RapidScada.Drivers.Abstractions", "src\Drivers\RapidScada.Drivers.Abstractions\RapidScada.Drivers.Abstractions.csproj", "{A4100000-0000-0000-0000-000000000041}"
+EndProject
+
+# Services
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RapidScada.Server", "src\Services\RapidScada.Server\RapidScada.Server.csproj", "{A5000000-0000-0000-0000-000000000005}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RapidScada.Communicator", "src\Services\RapidScada.Communicator\RapidScada.Communicator.csproj", "{A5100000-0000-0000-0000-000000000051}"
+EndProject
+
+# API
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RapidScada.WebApi", "src\Presentation\RapidScada.WebApi\RapidScada.WebApi.csproj", "{A6000000-0000-0000-0000-000000000006}"
+EndProject
+
+# Tests
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RapidScada.Domain.Tests", "tests\RapidScada.Domain.Tests\RapidScada.Domain.Tests.csproj", "{A7000000-0000-0000-0000-000000000007}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RapidScada.Integration.Tests", "tests\RapidScada.Integration.Tests\RapidScada.Integration.Tests.csproj", "{A7100000-0000-0000-0000-000000000071}"
+EndProject
+
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A1000000-0000-0000-0000-000000000001}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1000000-0000-0000-0000-000000000001}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1000000-0000-0000-0000-000000000001}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1000000-0000-0000-0000-000000000001}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2000000-0000-0000-0000-000000000002}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2000000-0000-0000-0000-000000000002}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2000000-0000-0000-0000-000000000002}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2000000-0000-0000-0000-000000000002}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3000000-0000-0000-0000-000000000003}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3000000-0000-0000-0000-000000000003}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3000000-0000-0000-0000-000000000003}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3000000-0000-0000-0000-000000000003}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3100000-0000-0000-0000-000000000031}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3100000-0000-0000-0000-000000000031}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3100000-0000-0000-0000-000000000031}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3100000-0000-0000-0000-000000000031}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4000000-0000-0000-0000-000000000004}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4000000-0000-0000-0000-000000000004}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4000000-0000-0000-0000-000000000004}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4000000-0000-0000-0000-000000000004}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4100000-0000-0000-0000-000000000041}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4100000-0000-0000-0000-000000000041}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4100000-0000-0000-0000-000000000041}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4100000-0000-0000-0000-000000000041}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5000000-0000-0000-0000-000000000005}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5000000-0000-0000-0000-000000000005}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5000000-0000-0000-0000-000000000005}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5000000-0000-0000-0000-000000000005}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5100000-0000-0000-0000-000000000051}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5100000-0000-0000-0000-000000000051}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5100000-0000-0000-0000-000000000051}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5100000-0000-0000-0000-000000000051}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6000000-0000-0000-0000-000000000006}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6000000-0000-0000-0000-000000000006}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6000000-0000-0000-0000-000000000006}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6000000-0000-0000-0000-000000000006}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7000000-0000-0000-0000-000000000007}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7000000-0000-0000-0000-000000000007}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7000000-0000-0000-0000-000000000007}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7000000-0000-0000-0000-000000000007}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7100000-0000-0000-0000-000000000071}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7100000-0000-0000-0000-000000000071}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7100000-0000-0000-0000-000000000071}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7100000-0000-0000-0000-000000000071}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

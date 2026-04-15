@@ -1,6 +1,0 @@
-Language                 : Turkish
-Culture name:            : tr-TR
-Rapid SCADA version      : 4.4
-Rapid SCADA applications : All
-Author                   : Mehmet Nazlı
-Author's email           : mehmetnazli@hotmail.com
