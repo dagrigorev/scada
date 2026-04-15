@@ -44,6 +44,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RapidScada.Realtime", "src\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{3266D9DA-937F-4DEE-8DFB-907F123D7AD4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RapidScada.Alarms", "src\Services\RapidScada.Alarms\RapidScada.Alarms.csproj", "{17E2A761-5E1C-EE9E-C4C5-FA58E05A57A6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -114,6 +116,10 @@ Global
 		{CF229D88-E05B-2346-591E-595FC2DED26B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF229D88-E05B-2346-591E-595FC2DED26B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF229D88-E05B-2346-591E-595FC2DED26B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17E2A761-5E1C-EE9E-C4C5-FA58E05A57A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17E2A761-5E1C-EE9E-C4C5-FA58E05A57A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17E2A761-5E1C-EE9E-C4C5-FA58E05A57A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17E2A761-5E1C-EE9E-C4C5-FA58E05A57A6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -134,6 +140,7 @@ Global
 		{CB432CC7-A938-F77B-705A-85F4560CB707} = {37EECF40-0940-40D6-B9E1-D59AE4762846}
 		{C1AE3924-724A-BE37-F08B-3F078FBD8390} = {37EECF40-0940-40D6-B9E1-D59AE4762846}
 		{CF229D88-E05B-2346-591E-595FC2DED26B} = {37EECF40-0940-40D6-B9E1-D59AE4762846}
+		{17E2A761-5E1C-EE9E-C4C5-FA58E05A57A6} = {37EECF40-0940-40D6-B9E1-D59AE4762846}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3B77DEF8-5241-41FB-A469-08EDB01F89EB}

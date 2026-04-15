@@ -7,6 +7,8 @@ using MQTTnet.Extensions.ManagedClient;
 using RapidScada.Application.Abstractions;
 using RapidScada.Domain.Common;
 using RapidScada.Domain.Entities;
+using RapidScada.Domain.ValueObjects;
+using RapidScada.Drivers.Abstractions;
 using RapidScada.Drivers.Mqtt.Models;
 
 namespace RapidScada.Drivers.Mqtt;
@@ -16,7 +18,6 @@ namespace RapidScada.Drivers.Mqtt;
 /// </summary>
 public sealed class MqttDriver : DeviceDriverBase
 {
-    private readonly ILogger<MqttDriver> _logger;
     private IManagedMqttClient? _mqttClient;
     private MqttDeviceTemplate? _template;
     private readonly Dictionary<string, MqttSubscription> _topicSubscriptions = new();
@@ -24,21 +25,24 @@ public sealed class MqttDriver : DeviceDriverBase
     private readonly object _lock = new();
 
     public MqttDriver(ILogger<MqttDriver> logger)
-        : base("MQTT Driver", "1.0.0")
+        : base(logger)
     {
-        _logger = logger;
     }
 
-    public override Task<Result> InitializeAsync(
+    public override DriverInfo Info => new(
+        Name: "MQTT Driver",
+        Version: "1.0.0",
+        Manufacturer: "RapidScada",
+        Description: "MQTT protocol driver for IoT devices",
+        SupportedProtocols: new[] { "MQTT 3.1.1", "MQTT 5.0" });
+
+    protected override Task<Result> OnInitializeAsync(
         Device device,
-        object? connectionSettings,
-        CancellationToken cancellationToken = default)
+        ConnectionSettings connectionSettings,
+        CancellationToken cancellationToken)
     {
         try
         {
-            if (connectionSettings is null)
-                return Task.FromResult(Result.Failure(Error.Validation("Connection settings are required")));
-
             var json = JsonSerializer.Serialize(connectionSettings);
             _template = JsonSerializer.Deserialize<MqttDeviceTemplate>(json);
 
@@ -52,7 +56,7 @@ public sealed class MqttDriver : DeviceDriverBase
                 _topicSubscriptions[sub.Topic] = sub;
             }
 
-            _logger.LogInformation(
+            Logger.LogInformation(
                 "MQTT driver initialized for device {DeviceId} with {Count} subscriptions",
                 device.Id,
                 _template.Subscriptions.Count);
@@ -61,12 +65,12 @@ public sealed class MqttDriver : DeviceDriverBase
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error initializing MQTT driver");
+            Logger.LogError(ex, "Error initializing MQTT driver");
             return Task.FromResult(Result.Failure(Error.Failure($"Initialization failed: {ex.Message}")));
         }
     }
 
-    public override async Task<Result> ConnectAsync(CancellationToken cancellationToken = default)
+    protected override async Task<Result> OnConnectAsync(CancellationToken cancellationToken)
     {
         if (_template is null)
             return Result.Failure(Error.Validation("Driver not initialized"));
@@ -118,7 +122,7 @@ public sealed class MqttDriver : DeviceDriverBase
 
             await _mqttClient.SubscribeAsync(subscriptions);
 
-            _logger.LogInformation(
+            Logger.LogInformation(
                 "Connected to MQTT broker at {Broker}:{Port} with {Count} subscriptions",
                 _template.ConnectionSettings.BrokerAddress,
                 _template.ConnectionSettings.Port,
@@ -128,12 +132,12 @@ public sealed class MqttDriver : DeviceDriverBase
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error connecting to MQTT broker");
+            Logger.LogError(ex, "Error connecting to MQTT broker");
             return Result.Failure(Error.Failure($"Connection failed: {ex.Message}"));
         }
     }
 
-    public override async Task DisconnectAsync()
+    protected override async Task OnDisconnectAsync()
     {
         if (_mqttClient is not null)
         {
@@ -142,11 +146,11 @@ public sealed class MqttDriver : DeviceDriverBase
             _mqttClient = null;
         }
 
-        _logger.LogInformation("Disconnected from MQTT broker");
+        Logger.LogInformation("Disconnected from MQTT broker");
     }
 
     protected override Task<Result<IReadOnlyList<TagReading>>> OnReadTagsAsync(
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken)
     {
         var readings = new List<TagReading>();
 
@@ -172,7 +176,51 @@ public sealed class MqttDriver : DeviceDriverBase
                 }
                 catch (Exception ex)
                 {
-                    _logger.LogWarning(
+                    Logger.LogWarning(
+                        ex,
+                        "Error parsing MQTT message from topic {Topic}",
+                        topic);
+                }
+            }
+        }
+
+        return Task.FromResult(Result.Success<IReadOnlyList<TagReading>>(readings));
+    }
+
+    protected override Task<Result<IReadOnlyList<TagReading>>> OnReadTagsAsync(
+        IEnumerable<int> tagNumbers,
+        CancellationToken cancellationToken)
+    {
+        // Filter readings by requested tag numbers
+        var requestedTags = new HashSet<int>(tagNumbers);
+        var readings = new List<TagReading>();
+
+        lock (_lock)
+        {
+            foreach (var kvp in _lastMessages)
+            {
+                var topic = kvp.Key;
+                var message = kvp.Value;
+
+                if (!_topicSubscriptions.TryGetValue(topic, out var subscription))
+                    continue;
+
+                if (!requestedTags.Contains(subscription.TagNumber))
+                    continue;
+
+                try
+                {
+                    var value = ParsePayload(message.Payload, subscription);
+                    
+                    readings.Add(new TagReading(
+                        subscription.TagNumber,
+                        value,
+                        message.Timestamp,
+                        Quality: 1.0));
+                }
+                catch (Exception ex)
+                {
+                    Logger.LogWarning(
                         ex,
                         "Error parsing MQTT message from topic {Topic}",
                         topic);
@@ -186,12 +234,12 @@ public sealed class MqttDriver : DeviceDriverBase
     protected override Task<Result> OnWriteTagAsync(
         int tagNumber,
         object value,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken)
     {
         if (_mqttClient is null || _template is null)
             return Task.FromResult(Result.Failure(Error.Validation("Not connected")));
 
-        // Find publish settings for this tag (you can enhance this with tag-to-topic mapping)
+        // Find publish settings for this tag
         var publishSettings = _template.PublishSettings.FirstOrDefault();
         if (publishSettings is null)
             return Task.FromResult(Result.Failure(Error.Validation("No publish settings configured")));
@@ -209,7 +257,7 @@ public sealed class MqttDriver : DeviceDriverBase
 
             _mqttClient.EnqueueAsync(message);
 
-            _logger.LogDebug(
+            Logger.LogDebug(
                 "Published value {Value} to topic {Topic}",
                 value,
                 publishSettings.Topic);
@@ -218,9 +266,21 @@ public sealed class MqttDriver : DeviceDriverBase
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error publishing MQTT message");
+            Logger.LogError(ex, "Error publishing MQTT message");
             return Task.FromResult(Result.Failure(Error.Failure($"Publish failed: {ex.Message}")));
         }
+    }
+
+    protected override Task<Result> OnSendCommandAsync(
+        string command,
+        object? parameters,
+        CancellationToken cancellationToken)
+    {
+        // For MQTT, commands can be published to command topics
+        Logger.LogInformation("Sending command {Command} via MQTT", command);
+        
+        // This is a placeholder - implement based on your command protocol
+        return Task.FromResult(Result.Success());
     }
 
     private Task OnMessageReceivedAsync(MqttApplicationMessageReceivedEventArgs args)
@@ -242,14 +302,14 @@ public sealed class MqttDriver : DeviceDriverBase
                 _lastMessages[topic] = message;
             }
 
-            _logger.LogDebug(
+            Logger.LogDebug(
                 "Received MQTT message from topic {Topic}, size {Size} bytes",
                 topic,
                 message.Payload.Length);
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error handling MQTT message");
+            Logger.LogError(ex, "Error handling MQTT message");
         }
 
         return Task.CompletedTask;
@@ -330,16 +390,14 @@ public sealed class MqttDriver : DeviceDriverBase
 
     private byte[] FormatPayload(object value, MqttPublishSettings settings)
     {
-        var formatted = settings.Format switch
+        string formatted = settings.Format switch
         {
             PayloadFormat.PlainText => value.ToString() ?? string.Empty,
             PayloadFormat.Json => JsonSerializer.Serialize(new { value, timestamp = DateTime.UtcNow }),
-            PayloadFormat.Binary => Encoding.UTF8.GetBytes(value.ToString() ?? string.Empty),
+            PayloadFormat.Binary => Convert.ToBase64String(Encoding.UTF8.GetBytes(value.ToString() ?? string.Empty)),
             _ => value.ToString() ?? string.Empty
         };
 
-        return formatted is byte[] bytes
-            ? bytes
-            : Encoding.UTF8.GetBytes(formatted.ToString() ?? string.Empty);
+        return Encoding.UTF8.GetBytes(formatted);
     }
 }
