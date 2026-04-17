@@ -44,7 +44,10 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 // MediatR
 builder.Services.AddMediatR(cfg =>
 {
-    cfg.RegisterServicesFromAssembly(typeof(RapidScada.Application.Commands.CreateDeviceCommand).Assembly);
+    cfg.RegisterServicesFromAssemblyContaining<
+        RapidScada.Application.Commands.CreateDeviceCommand>();
+    cfg.RegisterServicesFromAssemblyContaining<
+        RapidScada.Application.Queries.GetAllDevicesQuery>();
 });
 
 // Carter for minimal APIs
