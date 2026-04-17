@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 18
-VisualStudioVersion = 18.5.11709.299 stable
+VisualStudioVersion = 18.5.11709.299
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RapidScada.Domain", "src\Core\RapidScada.Domain\RapidScada.Domain.csproj", "{A1000000-0000-0000-0000-000000000001}"
 EndProject
@@ -45,6 +45,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{3266D9DA-937F-4DEE-8DFB-907F123D7AD4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RapidScada.Alarms", "src\Services\RapidScada.Alarms\RapidScada.Alarms.csproj", "{17E2A761-5E1C-EE9E-C4C5-FA58E05A57A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RapidScada.DesktopAdmin", "src\Presentation\DesktopUI\RapidScada.DesktopAdmin\RapidScada.DesktopAdmin.csproj", "{9962C9F1-D1C6-A965-E0E3-7BB4B6943512}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -120,6 +122,10 @@ Global
 		{17E2A761-5E1C-EE9E-C4C5-FA58E05A57A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{17E2A761-5E1C-EE9E-C4C5-FA58E05A57A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{17E2A761-5E1C-EE9E-C4C5-FA58E05A57A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9962C9F1-D1C6-A965-E0E3-7BB4B6943512}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9962C9F1-D1C6-A965-E0E3-7BB4B6943512}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9962C9F1-D1C6-A965-E0E3-7BB4B6943512}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9962C9F1-D1C6-A965-E0E3-7BB4B6943512}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
