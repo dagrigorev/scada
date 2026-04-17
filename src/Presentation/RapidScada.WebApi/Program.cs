@@ -41,13 +41,11 @@ builder.Services.AddScoped<ICommunicationLineRepository, CommunicationLineReposi
 builder.Services.AddScoped<ITagRepository, TagRepository>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-// MediatR
+// MediatR - Register all handlers from Application assembly
 builder.Services.AddMediatR(cfg =>
 {
-    cfg.RegisterServicesFromAssemblyContaining<
-        RapidScada.Application.Commands.CreateDeviceCommand>();
-    cfg.RegisterServicesFromAssemblyContaining<
-        RapidScada.Application.Queries.GetAllDevicesQuery>();
+    cfg.RegisterServicesFromAssemblyContaining<RapidScada.Application.Commands.CreateDeviceCommand>();
+    cfg.RegisterServicesFromAssemblyContaining<RapidScada.Application.Queries.GetAllDevicesQuery>();
 });
 
 // Carter for minimal APIs

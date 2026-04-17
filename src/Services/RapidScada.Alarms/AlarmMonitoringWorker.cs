@@ -13,7 +13,7 @@ namespace RapidScada.Alarms;
 public sealed class AlarmMonitoringWorker : BackgroundService
 {
     private readonly ILogger<AlarmMonitoringWorker> _logger;
-    private readonly ILogger<AlarmStateMachine> _alarmLogger;
+    private readonly ILogger<AlarmStateMachine> _smLogger;
     private readonly IServiceProvider _serviceProvider;
     private readonly IAlarmRepository _alarmRepository;
     private readonly AlarmEvaluationEngine _evaluationEngine;
@@ -23,14 +23,14 @@ public sealed class AlarmMonitoringWorker : BackgroundService
 
     public AlarmMonitoringWorker(
         ILogger<AlarmMonitoringWorker> logger,
-        ILogger<AlarmStateMachine> alarmLogger,
+        ILogger<AlarmStateMachine> smLogger,
         IServiceProvider serviceProvider,
         IAlarmRepository alarmRepository,
         AlarmEvaluationEngine evaluationEngine,
         IOptions<AlarmOptions> options)
     {
         _logger = logger;
-        _alarmLogger = alarmLogger;
+        _smLogger = smLogger;
         _serviceProvider = serviceProvider;
         _alarmRepository = alarmRepository;
         _evaluationEngine = evaluationEngine;
@@ -152,7 +152,7 @@ public sealed class AlarmMonitoringWorker : BackgroundService
             else if (existingAlarm.State == AlarmState.Cleared)
             {
                 // Re-trigger cleared alarm
-                var stateMachine = new AlarmStateMachine(existingAlarm, _alarmLogger);
+                var stateMachine = new AlarmStateMachine(existingAlarm, _smLogger);
                 stateMachine.Fire(AlarmTrigger.Trigger);
                 await _alarmRepository.UpdateAlarmAsync(existingAlarm, cancellationToken);
             }
@@ -189,7 +189,7 @@ public sealed class AlarmMonitoringWorker : BackgroundService
         await _alarmRepository.CreateAlarmAsync(alarm, cancellationToken);
         _activeAlarms[rule.Id] = alarm;
 
-        var stateMachine = new AlarmStateMachine(alarm, _alarmLogger);
+        var stateMachine = new AlarmStateMachine(alarm, _smLogger);
         stateMachine.Fire(AlarmTrigger.Trigger);
 
         await _alarmRepository.UpdateAlarmAsync(alarm, cancellationToken);
@@ -206,7 +206,7 @@ public sealed class AlarmMonitoringWorker : BackgroundService
 
     private async Task ClearAlarmAsync(Alarm alarm, string reason, CancellationToken cancellationToken)
     {
-        var stateMachine = new AlarmStateMachine(alarm, _alarmLogger);
+        var stateMachine = new AlarmStateMachine(alarm, _smLogger);
         stateMachine.Fire(AlarmTrigger.Clear);
 
         alarm.ClearReason = reason;

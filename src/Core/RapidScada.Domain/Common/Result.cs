@@ -79,4 +79,5 @@ public sealed record Error(string Code, string Message)
         new("Error.Validation", message);
 
     public static Error Failure(string message) => new("Error.Failed", message);
+    public static Error Failure(string code, string message) => new(code, message);
 }

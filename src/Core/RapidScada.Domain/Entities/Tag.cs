@@ -24,6 +24,7 @@ public sealed class Tag : Entity<TagId>
     public double? LowLimit { get; private set; }
     public double? HighLimit { get; private set; }
     public string? Formula { get; private set; }
+    public double? Quality { get; set; }
 
     /// <summary>
     /// Create a new tag

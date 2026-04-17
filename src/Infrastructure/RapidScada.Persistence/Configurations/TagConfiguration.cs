@@ -50,11 +50,18 @@ public sealed class TagConfiguration : IEntityTypeConfiguration<Tag>
             .HasMaxLength(20)
             .HasColumnName("units");
 
+        builder.Ignore(t => t.Quality);
+
         // Store current value as JSON
         builder.Property(t => t.CurrentValue)
             .HasConversion(
-                v => v != null ? JsonSerializer.Serialize(v, (JsonSerializerOptions?)null) : null,
-                v => v != null ? JsonSerializer.Deserialize<TagValue>(v, (JsonSerializerOptions?)null) : null)
+                v => v != null ? JsonSerializer.Serialize(new
+                {
+                    value = v.Value,           // Prevent EF from
+                    timestamp = v.Timestamp,   // mapping these as
+                    quality = v.Quality        // separate columns
+                }, (JsonSerializerOptions?)null) : null,
+                v => v != null ? DeserializeTagValue(v) : null)
             .HasColumnType("jsonb")
             .HasColumnName("current_value");
 
@@ -90,5 +97,18 @@ public sealed class TagConfiguration : IEntityTypeConfiguration<Tag>
 
         // Ignore domain events
         builder.Ignore(t => t.DomainEvents);
+    }
+
+    private static TagValue? DeserializeTagValue(string json)
+    {
+        var doc = JsonDocument.Parse(json);
+        var root = doc.RootElement;
+
+        var value = root.GetProperty("value").GetRawText();
+        var timestamp = root.GetProperty("timestamp").GetDateTime();
+        var quality = root.GetProperty("quality").GetDouble();
+
+        object parsedValue = JsonSerializer.Deserialize<object>(value) ?? value;
+        return TagValue.Create(parsedValue, timestamp, quality);
     }
 }

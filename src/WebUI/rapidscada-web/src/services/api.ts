@@ -2,10 +2,10 @@ import axios, { AxiosInstance } from 'axios';
 import { useAuthStore } from '../stores/authStore';
 
 // Development vs Production URLs
-const isDevelopment = true;//import.meta.env.DEV;
+const isDevelopment = import.meta.env.DEV;
 
 // API Configuration
-const API_ENDPOINTS = !isDevelopment
+const API_ENDPOINTS = isDevelopment
   ? {
       // Development - use Vite proxy
       identity: '/api/identity',
@@ -16,11 +16,11 @@ const API_ENDPOINTS = !isDevelopment
     }
   : {
       // Production - direct service URLs
-      identity: 'https://localhost:5003/api/identity',
+      identity: 'https://localhost:5003/api',
       webapi: 'https://localhost:5001/api',
-      realtime: 'https://localhost:5005/api/realtime',
-      communicator: 'https://localhost:5007/api/communicator',
-      archiver: 'https://localhost:5009/api/archiver',
+      realtime: 'https://localhost:5005/api',
+      communicator: 'https://localhost:5007/api',
+      archiver: 'https://localhost:5009/api',
     };
 
 // Create axios instance with interceptors

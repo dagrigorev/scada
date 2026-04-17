@@ -18,6 +18,12 @@ public sealed class TagEndpoints : ICarterModule
             .WithTags("Tags")
             .WithOpenApi();
 
+        // GET /api/tags - Get all tags
+        group.MapGet("/", GetAllTags)
+            .WithName("GetAllTags")
+            .WithSummary("Get all tags")
+            .Produces<List<TagDto>>();
+
         // GET /api/tags/current
         group.MapGet("/current", GetCurrentTagValues)
             .WithName("GetCurrentTagValues")
@@ -50,6 +56,16 @@ public sealed class TagEndpoints : ICarterModule
             .WithSummary("Update tag value")
             .Produces(204)
             .Produces<ProblemDetails>(400);
+    }
+
+    private static async Task<IResult> GetAllTags(
+        ISender sender,
+        CancellationToken cancellationToken)
+    {
+        var result = await sender.Send(new GetCurrentTagValuesQuery(), cancellationToken);
+        return result.IsSuccess
+            ? Results.Ok(result.Value)
+            : Results.Problem(result.Error.Message);
     }
 
     private static async Task<IResult> GetCurrentTagValues(
