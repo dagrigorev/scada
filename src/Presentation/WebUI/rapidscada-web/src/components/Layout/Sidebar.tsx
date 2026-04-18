@@ -10,6 +10,7 @@ import {
   Server,
   Users,
   Settings,
+  Network,
 } from 'lucide-react';
 
 export default function Sidebar() {
@@ -30,6 +31,7 @@ export default function Sidebar() {
   const systemItems = [
     { path: '/system/status', icon: Server, label: t('nav.systemStatus') },
     { path: '/system/communicator', icon: Server, label: t('nav.communicator') },
+    { path: '/system/discovery', icon: Network, label: t('nav.discovery') },
   ];
 
   const adminItems = [

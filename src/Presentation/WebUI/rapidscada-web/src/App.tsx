@@ -16,6 +16,7 @@ import HistoricalPage from './pages/Historical/HistoricalPage';
 import MnemonicPage from './pages/Mnemonic/MnemonicPage';
 import SystemStatusPage from './pages/System/SystemStatusPage';
 import CommunicatorPage from './pages/System/CommunicatorPage';
+import ServiceDiscoveryPage from './pages/System/ServiceDiscoveryPage';
 import UsersPage from './pages/Admin/UsersPage';
 import SettingsPage from './pages/Settings/SettingsPage';
 
@@ -58,6 +59,7 @@ function App() {
             <Route path="system">
               <Route path="status" element={<SystemStatusPage />} />
               <Route path="communicator" element={<CommunicatorPage />} />
+              <Route path="discovery" element={<ServiceDiscoveryPage />} />
             </Route>
             <Route path="admin">
               <Route path="users" element={<UsersPage />} />

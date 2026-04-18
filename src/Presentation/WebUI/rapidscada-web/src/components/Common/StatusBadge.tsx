@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
 interface StatusBadgeProps {
-  status: 'online' | 'offline' | 'warning' | 'error';
+  status: 'online' | 'offline' | 'warning' | 'error' | 'running';
   label?: string;
 }
 
@@ -9,6 +9,10 @@ export function StatusBadge({ status, label }: StatusBadgeProps) {
   const { t } = useTranslation();
 
   const statusConfig = {
+    running: {
+      className: 'status-online',
+      defaultLabel: t('devices.online'),
+    },
     online: {
       className: 'status-online',
       defaultLabel: t('devices.online'),
@@ -26,6 +30,13 @@ export function StatusBadge({ status, label }: StatusBadgeProps) {
       defaultLabel: t('common.error'),
     },
   };
+
+  if(!status)
+    return (
+      <span className={`status-badge status-offline`}>
+        {label || 'devices.offline'}
+      </span>
+    );
 
   const config = statusConfig[status];
 

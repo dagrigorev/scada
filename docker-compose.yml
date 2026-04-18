@@ -1,8 +1,9 @@
 version: '3.8'
 
 services:
+  # PostgreSQL + TimescaleDB
   postgres:
-    image: postgres:15-alpine
+    image: timescale/timescaledb:latest-pg15
     container_name: rapidscada-postgres
     environment:
       POSTGRES_DB: rapidscada
@@ -12,40 +13,204 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+      - ./src/Services/RapidScada.Archiver/TimescaleDB_Setup.sql:/docker-entrypoint-initdb.d/01-timescaledb.sql
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U scada"]
+      test: ["CMD-SHELL", "pg_isready -U scada -d rapidscada"]
       interval: 10s
       timeout: 5s
       retries: 5
+    networks:
+      - rapidscada-network
+    restart: unless-stopped
 
-  api:
+  # Redis (optional - for SignalR backplane)
+  redis:
+    image: redis:7-alpine
+    container_name: rapidscada-redis
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+    networks:
+      - rapidscada-network
+    restart: unless-stopped
+
+  # Identity Service (Port 5003)
+  identity:
+    build:
+      context: .
+      dockerfile: src/Services/RapidScada.Identity/Dockerfile
+    container_name: rapidscada-identity
+    ports:
+      - "5003:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:8080
+      - ConnectionStrings__DefaultConnection=Host=postgres;Port=5432;Database=rapidscada;Username=scada;Password=scada123
+      - Jwt__SecretKey=YourSuperSecretKeyThatIsAtLeast32CharactersLong!
+      - Jwt__Issuer=RapidScada.Identity
+      - Jwt__Audience=RapidScada
+      - Jwt__ExpirationMinutes=60
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - rapidscada-network
+    restart: unless-stopped
+
+  # WebAPI Service (Port 5001)
+  webapi:
     build:
       context: .
       dockerfile: src/Presentation/RapidScada.WebApi/Dockerfile
-    container_name: rapidscada-api
+    container_name: rapidscada-webapi
     ports:
-      - "5000:8080"
-      - "5001:8081"
+      - "5001:8080"
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:8080
       - ConnectionStrings__DefaultConnection=Host=postgres;Port=5432;Database=rapidscada;Username=scada;Password=scada123
+      - Jwt__SecretKey=YourSuperSecretKeyThatIsAtLeast32CharactersLong!
+      - Jwt__Issuer=RapidScada.Identity
+      - Jwt__Audience=RapidScada
     depends_on:
       postgres:
         condition: service_healthy
+      identity:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - rapidscada-network
     restart: unless-stopped
 
-  server:
+  # Realtime Service (Port 5005)
+  realtime:
     build:
       context: .
-      dockerfile: src/Services/RapidScada.Server/Dockerfile
-    container_name: rapidscada-server
+      dockerfile: src/Services/RapidScada.Realtime/Dockerfile
+    container_name: rapidscada-realtime
+    ports:
+      - "5005:8080"
     environment:
-      - DOTNET_ENVIRONMENT=Development
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:8080
       - ConnectionStrings__DefaultConnection=Host=postgres;Port=5432;Database=rapidscada;Username=scada;Password=scada123
+      - Jwt__SecretKey=YourSuperSecretKeyThatIsAtLeast32CharactersLong!
+      - Jwt__Issuer=RapidScada.Identity
+      - Jwt__Audience=RapidScada
+      - Realtime__UseRedisBackplane=true
+      - Realtime__RedisConnectionString=redis:6379
+      - Realtime__BroadcastIntervalMs=1000
     depends_on:
       postgres:
         condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - rapidscada-network
     restart: unless-stopped
+
+  # Communicator Service (Port 5007)
+  communicator:
+    build:
+      context: .
+      dockerfile: src/Services/RapidScada.Communicator/Dockerfile
+    container_name: rapidscada-communicator
+    ports:
+      - "5007:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:8080
+      - ConnectionStrings__DefaultConnection=Host=postgres;Port=5432;Database=rapidscada;Username=scada;Password=scada123
+      - Communicator__PollIntervalMs=5000
+      - Communicator__MaxConcurrentDevices=50
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - rapidscada-network
+    restart: unless-stopped
+
+  # Archiver Service (Port 5009)
+  archiver:
+    build:
+      context: .
+      dockerfile: src/Services/RapidScada.Archiver/Dockerfile
+    container_name: rapidscada-archiver
+    ports:
+      - "5009:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:8080
+      - ConnectionStrings__DefaultConnection=Host=postgres;Port=5432;Database=rapidscada;Username=scada;Password=scada123
+      - Archiver__FlushIntervalMs=10000
+      - Archiver__BatchSize=1000
+      - Archiver__RetentionDays=365
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - rapidscada-network
+    restart: unless-stopped
+
+  # Web UI (Nginx serving React build)
+  webui:
+    build:
+      context: ./src/WebUI/rapidscada-web
+      dockerfile: Dockerfile
+    container_name: rapidscada-webui
+    ports:
+      - "3000:80"
+    depends_on:
+      - webapi
+      - identity
+      - realtime
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - rapidscada-network
+    restart: unless-stopped
+
+networks:
+  rapidscada-network:
+    driver: bridge
 
 volumes:
   postgres_data:
+    driver: local
+

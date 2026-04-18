@@ -4,6 +4,7 @@ import Sidebar from './Sidebar';
 import TopBar from './TopBar';
 import { signalrService } from '../../services/signalrService';
 import { useTagStore } from '../../stores/tagStore';
+import { TagUpdate } from '@/types';
 
 export default function DashboardLayout() {
   const updateTagValues = useTagStore((state) => state.updateTagValues);
@@ -13,7 +14,7 @@ export default function DashboardLayout() {
     signalrService.start();
 
     // Subscribe to tag updates
-    signalrService.on('tagValuesUpdated', (updates) => {
+    signalrService.on('tagValuesUpdated', (updates: TagUpdate[]) => {
       updateTagValues(updates);
     });
 
