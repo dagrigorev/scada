@@ -123,6 +123,6 @@ using (var scope = app.Services.CreateScope())
     Log.Information("Identity database migrations applied successfully");
 }
 
-Log.Information("RapidScada Identity API starting on {Url}", app.Urls.FirstOrDefault() ?? "http://localhost:5002");
+Log.Information("RapidScada Identity API starting on {Url}", app.Urls.FirstOrDefault() ?? "http://localhost:5003");
 
 await app.RunAsync();

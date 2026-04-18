@@ -129,6 +129,6 @@ app.MapGet("/metrics", () => Results.Ok(new
     subscriptions = ScadaHub.GetActiveSubscriptionsCount()
 }));
 
-Log.Information("RapidScada Realtime Service starting on {Url}", app.Urls.FirstOrDefault() ?? "http://localhost:5004");
+Log.Information("RapidScada Realtime Service starting on {Url}", app.Urls.FirstOrDefault() ?? "http://localhost:5005");
 
 await app.RunAsync();
