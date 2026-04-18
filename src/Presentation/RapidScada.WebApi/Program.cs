@@ -51,6 +51,9 @@ builder.Services.AddMediatR(cfg =>
 // Carter for minimal APIs
 builder.Services.AddCarter();
 
+// HttpClient for service discovery health checks
+builder.Services.AddHttpClient();
+
 // CORS
 builder.Services.AddCors(options =>
 {
